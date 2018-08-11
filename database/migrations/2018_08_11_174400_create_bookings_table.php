@@ -20,11 +20,12 @@ class CreateBookingsTable extends Migration
             $table->date('date_from');
             $table->date('date_to');
 
+            $table->enum('type', ['chalet', 'camping']);
+            $table->enum('chalet_type', ['chalet-4', 'chalet-6'])->nullable();
+            $table->enum('camping_type', ['tent', 'folding_car', 'camper', 'caravan', 'other'])->nullable();
+
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers');
-
-            $table->unsignedInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('booking_types');
 
             $table->timestamps();
         });

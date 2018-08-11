@@ -19,8 +19,9 @@ class CreateAccommodationsTable extends Migration
             $table->string('name');
             $table->string('field_number');
 
-            $table->unsignedInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('accomodation_types');
+            $table->enum('type', ['chalet', 'camping']);
+            $table->enum('chalet_type', ['chalet-4', 'chalet-6'])->nullable();
+            $table->enum('camping_type', ['all', 'tent', 'folding_car', 'camper', 'caravan'])->nullable();
 
             $table->timestamps();
         });
