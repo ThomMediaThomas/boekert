@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccomodationTypesTable extends Migration
+class CreateAccommodationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,15 @@ class CreateAccomodationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('accomodation_types', function (Blueprint $table) {
+        Schema::create('accommodations', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name');
+            $table->string('field_number');
+
+            $table->unsignedInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('accomodation_types');
+
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreateAccomodationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accomodation_types');
+        Schema::dropIfExists('accommodations');
     }
 }
