@@ -1,9 +1,4 @@
-<?php echo View::make('includes/document_start'); ?>
-<div class="container">
-    @if (Auth::guest())
-        <?php echo View::make('includes/elements/login'); ?>
-    @else
-
-    @endif
-</div>
-<?php echo View::make('includes/document_end'); ?>
+@extends('layouts.app')
+@section('content')
+    <h1>Welkom bij boekert...</h1>
+@stop
