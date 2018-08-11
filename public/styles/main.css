@@ -7009,6 +7009,17 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
+.btn, .btn-large, .btn-small, .btn-large, .btn-small {
+  background-color: #546e7a; }
+  .btn:hover, .btn-large:hover, .btn-small:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #b0bec5; }
+
+.input-field .prefix.active {
+  color: #b0bec5; }
+
+.input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-color: #b0bec5; }
+
 nav {
   background-color: #37474f; }
   nav a.brand-logo img {
@@ -7022,3 +7033,10 @@ header, main, footer {
 @media only screen and (max-width: 992px) {
   header, main, footer {
     padding-left: 0; } }
+
+#login-box {
+  margin-top: 100px; }
+  #login-box h1 {
+    margin-top: 0px; }
+  #login-box p {
+    margin-bottom: 40px; }

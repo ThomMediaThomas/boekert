@@ -8,7 +8,6 @@
 <body>
 <main>
     <div class="flex-center position-ref full-height">
-    <?php //echo View::make('includes/elements/header'); ?>
-    <?php echo View::make('includes/elements/sidebar'); ?>
+            <?php echo View::make('includes/elements/sidebar'); ?>
 
 
