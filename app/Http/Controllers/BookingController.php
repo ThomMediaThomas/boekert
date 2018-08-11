@@ -14,7 +14,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        return view('bookings/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        return view('bookings/create');
     }
 
     /**
@@ -35,7 +35,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('bookings')->with('success','Employee has been added');
     }
 
     /**
