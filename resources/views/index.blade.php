@@ -1,5 +1,5 @@
-<?php echo View::make('includes/header'); ?>
+<?php echo View::make('includes/document_start'); ?>
     <div class="content">
         Hallo daar!
     </div>
-<?php echo View::make('includes/footer'); ?>
+<?php echo View::make('includes/document_end'); ?>
