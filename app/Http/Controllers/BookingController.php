@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Services\BookingService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -35,7 +37,25 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('bookings')->with('success','Employee has been added');
+        $bookingService = app(BookingService::class);
+
+        $booking = new Booking();
+
+        $booking->boekert_id = $bookingService->generateBoekertId();
+        $booking->date_from = $request->date_from;
+        $booking->date_to = $request->date_to;
+        $booking->type = $request->type;
+        if ($request->type == 'chalet') {
+            $booking->chalet_type = $request->chalet_type;
+        } else {
+            $booking->camping_type = $request->camping_type;
+        }
+        $booking->customer_id = $request->customer_id;
+
+
+        $booking->save();
+
+        return redirect('bookings')->with('success', 'Boeking succesvol toegevoegd');
     }
 
     /**

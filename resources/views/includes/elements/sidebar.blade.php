@@ -16,7 +16,7 @@
             </form>
         </div>
     </li>
-    <li><a href="#!"><i class="material-icons">receipt</i>Boekingen</a></li>
+    <li><a href="{{url('bookings')}}" title="Boekingen"><i class="material-icons">receipt</i>Boekingen</a></li>
     <li><a href="#!"><i class="material-icons">perm_contact_calendar</i>Kalender</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Beheer</a></li>

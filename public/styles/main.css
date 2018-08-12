@@ -7040,3 +7040,9 @@ header, main, footer {
     margin-top: 0px; }
   #login-box p {
     margin-bottom: 40px; }
+
+.input-field {
+  margin-bottom: 20px; }
+
+.select-wrapper {
+  margin: 0 0 8px 0; }
