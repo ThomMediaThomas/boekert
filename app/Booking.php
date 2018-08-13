@@ -17,4 +17,13 @@ class Booking extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected $includes = [
+        'customer'
+    ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

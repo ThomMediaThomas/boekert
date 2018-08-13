@@ -7041,8 +7041,5 @@ header, main, footer {
   #login-box p {
     margin-bottom: 40px; }
 
-.input-field {
-  margin-bottom: 20px; }
-
-.select-wrapper {
-  margin: 0 0 8px 0; }
+#bookings-table th, #bookings-table td {
+  vertical-align: top; }
