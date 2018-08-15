@@ -21,7 +21,7 @@
     <li><div class="divider"></div></li>
     <li><a class="subheader">Beheer</a></li>
     <li><a href="#!"><i class="material-icons">home</i>Accomodaties</a></li>
-    <li><a href="#!"><i class="material-icons">contacts</i>Klanten</a></li>
+    <li><a href="{{url('customers')}}" title="Klanten"><i class="material-icons">contacts</i>Klanten</a></li>
     @else
         <li>
             <div class="user-view">
