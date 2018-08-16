@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Accommodation;
+use App\Services\AccommodationService;
 use Illuminate\Http\Request;
 
 class AccommodationController extends Controller
@@ -14,7 +15,8 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        //
+        $accommodations = Accommodation::all();
+        return view('accommodations/index', ['accommodations' => $accommodations]);
     }
 
     /**
@@ -24,18 +26,22 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        //
+        return view('accommodations/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        //create customer
+        $accommodationService = app(AccommodationService::class);
+        $accommodation = $accommodationService->create($request);
+
+        return redirect('accommodations')->with('success', 'Accommodatie succesvol toegevoegd');
     }
 
     /**

@@ -16,5 +16,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('bookings', 'BookingController');
 Route::resource('customers', 'CustomerController');
+Route::resource('accommodations', 'AccommodationController');
 
 Auth::routes();
