@@ -5,6 +5,7 @@ $(document).ready(function(){
         format: 'dd-mm-yyyy',
         autoClose: true
     });
+    $('table.sortable').tablesorter();
 
     if ($('#create-booking').length > 0 || $('#create-accomodation').length > 0) {
         $('select#type').on('change', function () {

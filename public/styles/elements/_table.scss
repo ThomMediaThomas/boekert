@@ -1,0 +1,25 @@
+table.sortable {
+  .header {
+    cursor: pointer;
+
+    .material-icons {
+      display: none;
+      float: right;
+      color: $lighter;
+      font-size: 1rem;
+      margin: 4px 0px;
+    }
+
+    &.headerSortDown  {
+      .material-icons.up  {
+        display: block;
+      }
+    }
+
+    &.headerSortUp  {
+      .material-icons.down {
+        display: block;
+      }
+    }
+  }
+}

@@ -7033,5 +7033,18 @@ header, main, footer {
   #login-box p {
     margin-bottom: 40px; }
 
+table.sortable .header {
+  cursor: pointer; }
+  table.sortable .header .material-icons {
+    display: none;
+    float: right;
+    color: #b0bec5;
+    font-size: 1rem;
+    margin: 4px 0px; }
+  table.sortable .header.headerSortDown .material-icons.up {
+    display: block; }
+  table.sortable .header.headerSortUp .material-icons.down {
+    display: block; }
+
 #bookings-table th, #bookings-table td {
   vertical-align: top; }
