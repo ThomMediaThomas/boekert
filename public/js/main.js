@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
     $('table.sortable').tablesorter();
 
-    if ($('#create-booking').length > 0 || $('#create-accomodation').length > 0) {
+    if ($('#create-booking').length > 0 || $('#create-accommodation').length > 0) {
         $('select#type').on('change', function () {
             $('.input-field.show-on-change-type').hide();
             $('#show-for-' + this.value).show();

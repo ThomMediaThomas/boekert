@@ -63,7 +63,7 @@ class AccommodationController extends Controller
      */
     public function edit(Accommodation $accommodation)
     {
-        //
+        return view('accommodations/edit', ['accommodation' => $accommodation]);
     }
 
     /**
@@ -75,7 +75,11 @@ class AccommodationController extends Controller
      */
     public function update(Request $request, Accommodation $accommodation)
     {
-        //
+        //create customer
+        $accommodationService = app(AccommodationService::class);
+        $accommodation = $accommodationService->update($accommodation, $request);
+
+        return redirect('accommodations')->with('success', 'Accommodatie succesvol aangepast');
     }
 
     /**

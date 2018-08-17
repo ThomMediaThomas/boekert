@@ -7,22 +7,46 @@ use Illuminate\Http\Request;
 
 class AccommodationService
 {
-
-    public function create (Request $request)
+    /**
+     * @param Request $request
+     * @return Accommodation
+     */
+    public function create(Request $request)
     {
-        $accomodation = new Accommodation();
+        $accommodation = new Accommodation();
 
-        $accomodation->name = $request->name;
-        $accomodation->field_number = $request->field_number;
+        $accommodation->name = $request->name;
+        $accommodation->field_number = $request->field_number;
 
-        $accomodation->type = $request->type;
+        $accommodation->type = $request->type;
         if ($request->type == 'chalet') {
-            $accomodation->chalet_type = $request->chalet_type;
+            $accommodation->chalet_type = $request->chalet_type;
         } else {
-            $accomodation->camping_type = $request->camping_type;
+            $accommodation->camping_type = $request->camping_type;
         }
 
-        $accomodation->save();
-        return $accomodation;
+        $accommodation->save();
+        return $accommodation;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return Accommodation
+     */
+    public function update(Accommodation $accommodation, Request $request)
+    {
+        $accommodation->name = $request->name;
+        $accommodation->field_number = $request->field_number;
+
+        $accommodation->type = $request->type;
+        if ($request->type == 'chalet') {
+            $accommodation->chalet_type = $request->chalet_type;
+        } else {
+            $accommodation->camping_type = $request->camping_type;
+        }
+
+        $accommodation->save();
+        return $accommodation;
     }
 }

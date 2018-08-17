@@ -4,6 +4,7 @@
     <table class="striped higlight sortable" id="accommodations-table">
         <thead>
             <tr>
+                <th></th>
                 <th># <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>naam <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>nummer <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
@@ -13,6 +14,9 @@
         <tbody>
             @foreach ($accommodations as $accommodation)
                 <tr>
+                    <td>
+                        <a class="material-icons" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">create</a>
+                    </td>
                     <td>{{ $accommodation->id }}</td>
                     <td>{{ $accommodation->name }}</td>
                     <td>{{ $accommodation->field_number }}</td>

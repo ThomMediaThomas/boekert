@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <h2>Nieuwe accomodatie</h2>
-    <form method="POST" action="{{url('accommodations')}}" id="create-accomodation">
+    <h2>Nieuwe accommodatie</h2>
+    <form method="POST" action="{{url('accommodations')}}" id="create-accommodation">
         {{ csrf_field() }}
         <div class="card">
             <div class="card-content">
