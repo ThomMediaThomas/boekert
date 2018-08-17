@@ -63,7 +63,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers/edit', ['customer' => $customer]);
     }
 
     /**
@@ -75,7 +75,11 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        //create customer
+        $customerService = app(CustomerService::class);
+        $customer = $customerService->update($customer, $request);
+
+        return redirect('customers')->with('success', 'Klant succesvol aangepast');
     }
 
     /**

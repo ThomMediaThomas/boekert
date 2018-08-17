@@ -4,6 +4,7 @@
     <table class="striped higlight sortable" id="bookings-table">
         <thead>
             <tr>
+                <th></th>
                 <th># <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>voornaam <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>achternaam <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
@@ -19,6 +20,9 @@
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
+                    <td>
+                        <a class="material-icons" href="{{ url("/customers/{$customer->id}/edit") }}" title="Klant bewerken">create</a>
+                    </td>
                     <td>{{ $customer->id }}</td>
                     <td>{{ $customer->firstname }}</td>
                     <td>{{ $customer->lastname }}</td>
