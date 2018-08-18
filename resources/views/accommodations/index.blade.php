@@ -15,7 +15,11 @@
             @foreach ($accommodations as $accommodation)
                 <tr>
                     <td>
-                        <a class="material-icons" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">create</a>
+                        <a class="btn material-icons" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">create</a>
+                        {{--<form action="{{ url("/accommodations/{$accommodation->id}") }}" method="POST">--}}
+                            {{--<input name="_method" type="hidden" value="DELETE">--}}
+                            {{--<button type="submit" class="btn material-icons">delete</button>--}}
+                        {{--</form>--}}
                     </td>
                     <td>{{ $accommodation->id }}</td>
                     <td>{{ $accommodation->name }}</td>

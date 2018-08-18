@@ -90,6 +90,7 @@ class AccommodationController extends Controller
      */
     public function destroy(Accommodation $accommodation)
     {
-        //
+        $accommodation->delete();
+        return redirect('accommodations')->with('success', 'Accommodatie succesvol verwijderd');
     }
 }
