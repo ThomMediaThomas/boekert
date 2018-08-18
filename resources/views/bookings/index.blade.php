@@ -18,13 +18,15 @@
                     <td>{{ $booking->date_from }}</td>
                     <td>{{ $booking->date_to }}</td>
                     <td>
-                        <strong>
-                            <a title="Stuur {{ $booking->customer->firstname }} een e-mail" href="mailto:{{ $booking->customer->email }}">
-                                {{ $booking->customer->firstname }} {{ $booking->customer->lastname }}
-                            </a>
-                        </strong><br />
-                        <span>{{ $booking->customer->street }} {{ $booking->customer->housenumber }}</span><br />
-                        <span>{{ $booking->customer->zipt }} {{ $booking->customer->city }} ({{ $booking->customer->country }})</span>
+                        @if (isset($booking->customer))
+                            <strong>
+                                <a title="Stuur {{ $booking->customer->firstname }} een e-mail" href="mailto:{{ $booking->customer->email }}">
+                                    {{ $booking->customer->firstname }} {{ $booking->customer->lastname }}
+                                </a>
+                            </strong><br />
+                            <span>{{ $booking->customer->street }} {{ $booking->customer->housenumber }}</span><br />
+                            <span>{{ $booking->customer->zipt }} {{ $booking->customer->city }} ({{ $booking->customer->country }})</span>
+                        @endif
                     </td>
                     <td><strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}</td>
                 </tr>
