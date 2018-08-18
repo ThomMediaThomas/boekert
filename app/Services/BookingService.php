@@ -13,7 +13,7 @@ class BookingService
     /**
      * @return string
      */
-    public function generateBoekertId ()
+    public function generateBoekertId()
     {
         $now = Carbon::now()->timestamp;
         $randomizer = Str::random(6);
@@ -25,12 +25,11 @@ class BookingService
      * @param $customerId
      * @return Booking
      */
-    public function createWithCustomer (Request $request, $customerId)
+    public function createWithCustomer(Request $request, $customerId)
     {
         $booking = new Booking();
         $booking->boekert_id = $this->generateBoekertId();
 
-        //@TODO NOT WORKING SAVE DATES
         $dateFrom = DateTime::createFromFormat('d-m-Y', $request->date_from);
         $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
         $dateTo = DateTime::createFromFormat('d-m-Y', $request->date_to);
@@ -44,6 +43,29 @@ class BookingService
         }
 
         $booking->customer_id = $customerId;
+
+        $booking->save();
+        return $booking;
+    }
+
+    /**
+     * @param Booking $booking
+     * @param Request $request
+     * @return Booking
+     */
+    public function update(Booking $booking, Request $request)
+    {
+        $dateFrom = DateTime::createFromFormat('d-m-Y', $request->date_from);
+        $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
+        $dateTo = DateTime::createFromFormat('d-m-Y', $request->date_to);
+        $booking->date_to = $dateTo->format('Y-m-d H:i:s');
+
+        $booking->type = $request->type;
+        if ($request->type == 'chalet') {
+            $booking->chalet_type = $request->chalet_type;
+        } else {
+            $booking->camping_type = $request->camping_type;
+        }
 
         $booking->save();
         return $booking;

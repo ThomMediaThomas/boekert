@@ -68,7 +68,7 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        return view('bookings/edit', ['booking' => $booking]);
     }
 
     /**
@@ -80,7 +80,11 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        //create customer
+        $bookingService = app(BookingService::class);
+        $booking = $bookingService->update($booking, $request);
+
+        return redirect('bookings')->with('success', 'Booking succesvol aangepast');
     }
 
     /**

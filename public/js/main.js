@@ -11,6 +11,6 @@ $(document).ready(function(){
         $('select#type').on('change', function () {
             $('.input-field.show-on-change-type').hide();
             $('#show-for-' + this.value).show();
-        });
+        }).trigger('change');
     }
 });

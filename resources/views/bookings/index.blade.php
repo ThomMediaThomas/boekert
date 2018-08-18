@@ -9,6 +9,7 @@
                 <th>tot <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>klant <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>type <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,11 @@
                         @endif
                     </td>
                     <td><strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}</td>
+                    <td class="action-cell">
+                        <a class="btn-floating small"  href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">
+                            <i class="material-icons">create</i>
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
