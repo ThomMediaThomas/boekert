@@ -1,6 +1,6 @@
 <?php echo View::make('includes/document_start'); ?>
 <div class="row">
-    <div class="col s12">
+    <div class="col s10 push-s1">
         @if (session('success'))
             <div class="alert card-panel green">
                 {{ session('success') }}
