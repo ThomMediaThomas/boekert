@@ -7046,5 +7046,8 @@ table.sortable .header {
   table.sortable .header.headerSortUp .material-icons.down {
     display: block; }
 
+table .action-cell {
+  width: 50px; }
+
 #bookings-table th, #bookings-table td {
   vertical-align: top; }

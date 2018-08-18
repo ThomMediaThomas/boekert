@@ -4,27 +4,32 @@
     <table class="striped higlight sortable" id="accommodations-table">
         <thead>
             <tr>
-                <th></th>
                 <th># <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>naam <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>nummer <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>type <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
+                <th colspan="2"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($accommodations as $accommodation)
                 <tr>
-                    <td>
-                        <a class="btn material-icons" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">create</a>
-                        {{--<form action="{{ url("/accommodations/{$accommodation->id}") }}" method="POST">--}}
-                            {{--<input name="_method" type="hidden" value="DELETE">--}}
-                            {{--<button type="submit" class="btn material-icons">delete</button>--}}
-                        {{--</form>--}}
-                    </td>
                     <td>{{ $accommodation->id }}</td>
                     <td>{{ $accommodation->name }}</td>
                     <td>{{ $accommodation->field_number }}</td>
                     <td><strong>{{ $accommodation->type }}</strong> | {{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}</td>
+                    <td class="action-cell">
+                        <a class="btn-floating small" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">
+                            <i class="material-icons">create</i>
+                        </a>
+                    </td>
+                    <td class="action-cell">
+                        <form action="{{ url("/accommodations/{$accommodation->id}") }}" method="POST">
+                            {{ csrf_field() }}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn-floating small red"><i class="material-icons">delete</i></button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
