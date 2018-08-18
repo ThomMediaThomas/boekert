@@ -27,54 +27,27 @@
                             <div class="input-field col s6">
                                 <select id="type" class="{{ $errors->has('type') ? ' invalid' : '' }}" name="type"
                                         value="{{ $booking->type }}" required>
-                                    <option value="chalet"
-                                            <?php if ($booking->type == 'chalet'): ?>selected<?php endif; ?>>Huisje
-                                        huren
-                                    </option>
-                                    <option value="camping"
-                                            <?php if ($booking->type == 'camping'): ?>selected<?php endif; ?>>
-                                        Kampeerplaats huren
-                                    </option>
+                                    <option value="chalet" <?php if ($booking->type == 'chalet'): ?>selected<?php endif; ?>>Huisje huren</option>
+                                    <option value="camping" <?php if ($booking->type == 'camping'): ?>selected<?php endif; ?>>Kampeerplaats huren</option>
                                 </select>
                                 <label for="type">Type</label>
                             </div>
                             <div class="input-field show-on-change-type col s6" id="show-for-chalet">
                                 <select id="chalet_type" class="{{ $errors->has('chalet_type') ? ' invalid' : '' }}"
                                         name="chalet_type" value="{{ $booking->chalet_type }}">
-                                    <option value="chalet-4"
-                                            <?php if ($booking->chalet_type == 'chalet-4'): ?>selected<?php endif; ?>>
-                                        4-persoonshuisje
-                                    </option>
-                                    <option value="chalet-6"
-                                            <?php if ($booking->chalet_type == 'chalet-6'): ?>selected<?php endif; ?>>
-                                        6-persoonshuisje
-                                    </option>
+                                    <option value="chalet-4" <?php if ($booking->chalet_type == 'chalet-4'): ?>selected<?php endif; ?>>4-persoonshuisje</option>
+                                    <option value="chalet-6" <?php if ($booking->chalet_type == 'chalet-6'): ?>selected<?php endif; ?>>6-persoonshuisje</option>
                                 </select>
                                 <label for="type">Type huisje</label>
                             </div>
                             <div class="input-field show-on-change-type col s6" id="show-for-camping"
                                  style="display: none;">
-                                <select id="camping_type" class="{{ $errors->has('camping_type') ? ' invalid' : '' }}"
-                                        name="camping_type" value="{{ $booking->camping_type }}">
-                                    <option value="tent"
-                                            <?php if ($booking->camping_type == 'tent'): ?>selected<?php endif; ?>>Tent
-                                    </option>
-                                    <option value="folding_car"
-                                            <?php if ($booking->camping_type == 'folding_car'): ?>selected<?php endif; ?>>
-                                        Vouwwagen
-                                    </option>
-                                    <option value="camper"
-                                            <?php if ($booking->camping_type == 'camper'): ?>selected<?php endif; ?>>
-                                        Camper
-                                    </option>
-                                    <option value="caravan"
-                                            <?php if ($booking->camping_type == 'caravan'): ?>selected<?php endif; ?>>
-                                        Caravan
-                                    </option>
-                                    <option value="other"
-                                            <?php if ($booking->camping_type == 'other'): ?>selected<?php endif; ?>>
-                                        Andes...
-                                    </option>
+                                <select id="camping_type" class="{{ $errors->has('camping_type') ? ' invalid' : '' }}" name="camping_type" value="{{ $booking->camping_type }}">
+                                    <option value="tent" <?php if ($booking->camping_type == 'tent'): ?>selected<?php endif; ?>>Tent</option>
+                                    <option value="folding_car" <?php if ($booking->camping_type == 'folding_car'): ?>selected<?php endif; ?>>Vouwwagen</option>
+                                    <option value="camper" <?php if ($booking->camping_type == 'camper'): ?>selected<?php endif; ?>>Camper</option>
+                                    <option value="caravan" <?php if ($booking->camping_type == 'caravan'): ?>selected<?php endif; ?>>Caravan</option>
+                                    <option value="other" <?php if ($booking->camping_type == 'other'): ?>selected<?php endif; ?>>Anders...</option>
                                 </select>
                                 <label for="type">Type huisje</label>
                             </div>
