@@ -13,4 +13,10 @@ $(document).ready(function(){
             $('#show-for-' + this.value).show();
         }).trigger('change');
     }
+
+    if($('.alert').length > 0) {
+        $('.alert').on('click', function () {
+            $(this).slideUp();
+        });
+    }
 });

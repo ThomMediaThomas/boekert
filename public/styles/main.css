@@ -7063,5 +7063,11 @@ table.compact td, table.compact th {
 .card.half {
   width: 50%; }
 
+.card-panel.alert {
+  color: White;
+  font-weight: bold;
+  padding: 12px;
+  cursor: pointer; }
+
 #bookings-table th, #bookings-table td {
   vertical-align: top; }
