@@ -95,6 +95,7 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        $booking->delete();
+        return redirect('bookings')->with('success', 'Boeking succesvol verwijderd');
     }
 }

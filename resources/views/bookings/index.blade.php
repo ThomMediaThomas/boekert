@@ -9,7 +9,7 @@
                 <th>tot <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>klant <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>type <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
-                <th></th>
+                <th colspan="2"></th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +34,13 @@
                         <a class="btn-floating small"  href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">
                             <i class="material-icons">create</i>
                         </a>
+                    </td>
+                    <td class="action-cell">
+                        <form action="{{ url("/bookings/{$booking->id}") }}" method="POST">
+                            {{ csrf_field() }}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="btn-floating small red"><i class="material-icons">delete</i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
