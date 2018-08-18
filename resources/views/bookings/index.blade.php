@@ -8,14 +8,18 @@
                 <th>van <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>tot <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>klant <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
-                <th>type <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th colspan="2"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($bookings as $booking)
                 <tr>
-                    <td>{{ $booking->boekert_id }}</td>
+                    <td>
+                        {{ $booking->boekert_id }}
+                        <span class="badge type type-{{ $booking->type }} subtype-{{ $booking->camping_type }}{{ $booking->chalet_type }}">
+                            <strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}
+                        </span>
+                    </td>
                     <td>{{ $booking->date_from }}</td>
                     <td>{{ $booking->date_to }}</td>
                     <td>
@@ -29,7 +33,6 @@
                             <span>{{ $booking->customer->zipt }} {{ $booking->customer->city }} ({{ $booking->customer->country }})</span>
                         @endif
                     </td>
-                    <td><strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}</td>
                     <td class="action-cell">
                         <a class="btn-floating small"  href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">
                             <i class="material-icons">create</i>

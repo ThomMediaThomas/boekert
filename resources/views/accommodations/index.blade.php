@@ -7,7 +7,6 @@
                 <th># <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>naam <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>nummer <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
-                <th>type <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th colspan="2"></th>
             </tr>
         </thead>
@@ -15,9 +14,13 @@
             @foreach ($accommodations as $accommodation)
                 <tr>
                     <td>{{ $accommodation->id }}</td>
-                    <td>{{ $accommodation->name }}</td>
+                    <td>
+                        {{ $accommodation->name }}
+                        <span class="badge type type-{{ $accommodation->type }} subtype-{{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}">
+                            <strong>{{ $accommodation->type }}</strong> | {{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}
+                        </span>
+                    </td>
                     <td>{{ $accommodation->field_number }}</td>
-                    <td><strong>{{ $accommodation->type }}</strong> | {{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}</td>
                     <td class="action-cell">
                         <a class="btn-floating small" href="{{ url("/accommodations/{$accommodation->id}/edit") }}" title="Accommodatie bewerken">
                             <i class="material-icons">create</i>

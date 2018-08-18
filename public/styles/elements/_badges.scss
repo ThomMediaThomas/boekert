@@ -1,0 +1,17 @@
+span.badge {
+  &.type {
+    margin-left: 10px;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    border-radius: 2px;
+
+    &-camping {
+      background-color: $camping;
+    }
+
+    &-chalet {
+      background-color: $chalet;
+    }
+  }
+}

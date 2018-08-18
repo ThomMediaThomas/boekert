@@ -7069,5 +7069,16 @@ table.compact td, table.compact th {
   padding: 12px;
   cursor: pointer; }
 
+span.badge.type {
+  margin-left: 10px;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 2px; }
+  span.badge.type-camping {
+    background-color: #8bc34a; }
+  span.badge.type-chalet {
+    background-color: #009688; }
+
 #bookings-table th, #bookings-table td {
   vertical-align: top; }
