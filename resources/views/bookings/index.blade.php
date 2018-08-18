@@ -8,6 +8,7 @@
                 <th>van <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>tot <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th>klant <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
+                <th>toegewezen <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>
                 <th colspan="2"></th>
             </tr>
         </thead>
@@ -15,7 +16,7 @@
             @foreach ($bookings as $booking)
                 <tr>
                     <td>
-                        {{ $booking->boekert_id }}
+                        <a href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">{{ $booking->boekert_id }}</a>
                         <span class="badge type type-{{ $booking->type }} subtype-{{ $booking->camping_type }}{{ $booking->chalet_type }}">
                             <strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}
                         </span>
@@ -24,17 +25,18 @@
                     <td>{{ $booking->date_to }}</td>
                     <td>
                         @if (isset($booking->customer))
-                            <strong>
-                                <a title="Stuur {{ $booking->customer->firstname }} een e-mail" href="mailto:{{ $booking->customer->email }}">
-                                    {{ $booking->customer->firstname }} {{ $booking->customer->lastname }}
-                                </a>
-                            </strong><br />
-                            <span>{{ $booking->customer->street }} {{ $booking->customer->housenumber }}</span><br />
-                            <span>{{ $booking->customer->zipt }} {{ $booking->customer->city }} ({{ $booking->customer->country }})</span>
+                            <a title="Klantgegevens" href="{{ url("/customers/{$booking->customer->id}/edit") }}">
+                                {{ $booking->customer->firstname }} {{ $booking->customer->lastname }} ({{ $booking->customer->country }})
+                            </a>
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($booking->accommodation))
+                            {{ $booking->accommodation->name }} / {{ $booking->accommodation->field_number }}
                         @endif
                     </td>
                     <td class="action-cell">
-                        <a class="btn-floating small"  href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">
+                        <a class="btn-floating small" href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">
                             <i class="material-icons">create</i>
                         </a>
                     </td>

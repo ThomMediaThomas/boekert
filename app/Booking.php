@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
@@ -19,11 +20,29 @@ class Booking extends Model
     ];
 
     protected $includes = [
-        'customer'
+        'customer',
+        'accommodation'
     ];
+
+    public function getDateFromAttribute($value)
+    {
+        $dateFrom = DateTime::createFromFormat('Y-m-d', $value);
+        return $dateFrom->format('d-m-Y');
+    }
+
+    public function getDateToAttribute($value)
+    {
+        $dateTo = DateTime::createFromFormat('Y-m-d', $value);
+        return $dateTo->format('d-m-Y');
+    }
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function accommodation()
+    {
+        return $this->belongsTo(Accommodation::class);
     }
 }

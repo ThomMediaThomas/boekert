@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Services\AccommodationService;
 use App\Services\BookingService;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
@@ -68,7 +69,10 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        return view('bookings/edit', ['booking' => $booking]);
+        //get accommodations
+        $accommodationService = app(AccommodationService::class);
+        $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
+        return view('bookings/edit', ['booking' => $booking, 'accommodations' => $accommodations]);
     }
 
     /**

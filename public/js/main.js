@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     if($('.alert').length > 0) {
         $('.alert').on('click', function () {
-            $(this).slideUp();
+            $(this).fadeOut();
         });
     }
 });

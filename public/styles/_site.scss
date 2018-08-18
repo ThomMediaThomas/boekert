@@ -1,0 +1,10 @@
+p {
+  &.with-margin {
+    margin-bottom: $baseMargin!important;
+  }
+
+  &.smaller {
+    font-size: 0.8em;
+    font-style: italic;
+  }
+}

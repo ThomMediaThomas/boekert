@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Accommodation;
+use App\Booking;
 use Illuminate\Http\Request;
 
 class AccommodationService
@@ -48,5 +49,15 @@ class AccommodationService
 
         $accommodation->save();
         return $accommodation;
+    }
+
+    /**
+     * @param Booking $booking
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getAvailableAccommodationsForBooking(Booking $booking)
+    {
+        $accommodations = Accommodation::all();
+        return $accommodations;
     }
 }
