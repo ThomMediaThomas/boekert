@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h2>Alle accommodaties <a href="{{url('accommodations/create')}}" title="Nieuwe accommodatie maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h2>
-    <table class="striped higlight sortable" id="accommodations-table">
+    <table class="striped higlight sortable compact" id="accommodations-table">
         <thead>
             <tr>
                 <th># <i class="up material-icons">arrow_upward</i><i class="down material-icons">arrow_downward</i></th>

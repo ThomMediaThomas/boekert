@@ -26,6 +26,23 @@ table.sortable {
 
 table {
   .action-cell {
-    width: 50px;
+    width: 30px;
+  }
+
+  .btn-floating {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+
+    i {
+      font-size: 1.2rem;
+      line-height: 30px;
+    }
+  }
+}
+
+table.compact {
+  td, th {
+    padding: 5px;
   }
 }
