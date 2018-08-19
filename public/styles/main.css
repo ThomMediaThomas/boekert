@@ -7080,8 +7080,40 @@ span.badge.type {
   span.badge.type-chalet {
     background-color: #009688; }
 
+.filter-form .row, .filter-form .input-field {
+  margin-bottom: 0px; }
+
 #bookings-table th, #bookings-table td {
   vertical-align: top; }
+
+#calendar th, #calendar td {
+  padding: 5px; }
+  #calendar th.accommodation, #calendar td.accommodation {
+    font-size: 0.9rem;
+    font-weight: normal;
+    font-style: italic;
+    text-align: right;
+    padding: 5px 10px; }
+
+#calendar th {
+  background-color: #455a64;
+  color: White;
+  border-radius: 0px; }
+  #calendar th.date {
+    text-align: center;
+    min-width: 40px; }
+    #calendar th.date strong, #calendar th.date span {
+      display: block; }
+    #calendar th.date span {
+      font-size: 0.7rem;
+      color: #90a4ae; }
+    #calendar th.date strong {
+      font-size: 0.9rem; }
+
+#calendar td {
+  border-radius: 0px; }
+  #calendar td.accommodation {
+    background-color: #cfd8dc; }
 
 p.with-margin {
   margin-bottom: 20px !important; }

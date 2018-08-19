@@ -1,0 +1,49 @@
+#calendar {
+  th, td {
+    padding: 5px;
+
+    &.accommodation {
+      font-size: 0.9rem;
+      font-weight: normal;
+      font-style: italic;
+      text-align: right;
+      padding: 5px 10px;
+    }
+  }
+
+  th {
+    background-color: $dark;
+    color: White;
+    border-radius: 0px;
+
+    &.date {
+      text-align: center;
+      min-width: 40px;
+
+      strong, span {
+        display: block;
+      }
+
+      span {
+        font-size: 0.7rem;
+        color: $light;
+      }
+
+      strong {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  td {
+    border-radius: 0px;
+
+    &.date {
+
+    }
+
+    &.accommodation {
+      background-color: $lightest;
+    }
+  }
+}
