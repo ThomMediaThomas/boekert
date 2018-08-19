@@ -53,7 +53,8 @@ class Booking extends Model
      */
     public function scopeDateFrom($query, $value)
     {
-        return $query->where('date_from', '>=', $value);
+        $from = DateTime::createFromFormat('d-m-Y', $value);
+        return $query->where('date_from', $from->format('Y-m-d'));
     }
 
     /**
@@ -63,7 +64,8 @@ class Booking extends Model
      */
     public function scopeDateTo($query, $value)
     {
-        return $query->where('date_to', '<=', $value);
+        $to = DateTime::createFromFormat('d-m-Y', $value);
+        return $query->where('date_to', $to->format('Y-m-d'));
     }
 
     /**

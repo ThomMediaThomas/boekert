@@ -8,7 +8,7 @@
             <div class="col s8">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Gegevens over boeking</span>
+                        <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>
                         <div class="row">
                             <div class="input-field col s6">
                                 <label for="date_from">Datum van</label>
@@ -58,7 +58,7 @@
             <div class="col s4">
                 <div class="card blue">
                     <div class="card-content white-text">
-                        <span class="card-title">Wijzigingen opslaan</span>
+                        <span class="card-title"><i class="material-icons">save</i> Wijzigingen opslaan</span>
                         <p class="with-margin">Je wijzigingen worden <strong>niet</strong> automatisch opgeslagen. Klik hieronder om je wijzigingen op te slaan.</p>
                         <p class="with-margin">
                             <button class="btn teal" type="submit">Wijzigingen opslaan</button>
@@ -71,13 +71,13 @@
                 </div>
                 <div class="card amber lighten-4">
                     <div class="card-content">
-                        <span class="card-title">Koppelen</span>
+                        <span class="card-title"><i class="material-icons">edit_location</i> Koppelen</span>
                         <p class="with-margin">Hieronder vind je een overzicht van <strong>de beschikbare plaatsen</strong> voor de periode
                             en het type van de boeking.</p>
                         <div class="input-field">
                             <select id="accommodation_id" class="{{ $errors->has('type') ? ' invalid' : '' }}"
                                     name="accommodation_id" value="{{ old('accommodation_id') }}" required>
-                                <option>-- Maak een keuze --</option>
+                                <option value="0">-- Maak een keuze --</option>
                                 @foreach ($accommodations as $accommodation)
                                     <option value="{{ $accommodation->id }}"
                                             <?php if ($booking->accommodation_id == $accommodation->id): ?>selected<?php endif; ?>
@@ -91,7 +91,7 @@
                 @if (isset($booking->customer))
                     <div class="card green">
                         <div class="card-content white-text">
-                            <span class="card-title">Klantgegevens</span>
+                            <span class="card-title"><i class="material-icons">account_box</i> Klantgegevens</span>
                             <strong>
                                 <a class="white-text" title="Klantgegevens" href="{{ url("/customers/{$booking->customer->id}/edit") }}">
                                     {{ $booking->customer->firstname }} {{ $booking->customer->lastname }} ({{ $booking->customer->country }})

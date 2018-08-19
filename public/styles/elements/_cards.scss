@@ -2,4 +2,12 @@
   &.half {
     width: 50%;
   }
+
+  .card-title {
+    .material-icons {
+      position: relative;
+      top: 3px;
+      margin-right: 5px;
+    }
+  }
 }

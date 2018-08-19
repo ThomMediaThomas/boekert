@@ -5,7 +5,7 @@
         {{ csrf_field() }}
         <div class="card">
             <div class="card-content">
-                <span class="card-title">Gegevens over boeking</span>
+                <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>
                 <div class="row">
                     <div class="input-field col s6">
                         <label for="date_from">Datum van</label>
@@ -46,7 +46,7 @@
         </div>
         <div class="card">
             <div class="card-content">
-                <span class="card-title">Personalia</span>
+                <span class="card-title"><i class="material-icons">account_box</i> Personalia</span>
                 <?php echo View::make('customers/elements/form'); ?>
             </div>
         </div>

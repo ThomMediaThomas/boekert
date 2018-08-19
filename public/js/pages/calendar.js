@@ -7,7 +7,9 @@ var Calendar = function () {
     self.$calendarBookings = null;
 
     self.init = function () {
-        self.bookings = BOOKINGS;
+        if (typeof BOOKINGS !== 'undefined') {
+            self.bookings = BOOKINGS;
+        }
         self.$calendar = $('#calendar');
         self.$calendarHolder = $('#calendar-holder');
         self.$calendarBookings = $('#calendar-bookings');

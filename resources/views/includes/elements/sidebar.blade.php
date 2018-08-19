@@ -16,8 +16,9 @@
             </form>
         </div>
     </li>
+    <li><a href="{{url('home')}}" title="Dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
     <li><a href="{{url('bookings')}}" title="Boekingen"><i class="material-icons">receipt</i>Boekingen</a></li>
-    <li><a href="{{url('calendar')}}" title="Kalender"><i class="material-icons">perm_contact_calendar</i>Kalender</a></li>
+    <li><a href="{{url('calendar')}}" title="Kalender"><i class="material-icons">date_range</i>Kalender</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Beheer</a></li>
     <li><a href="{{url('accommodations')}}" title="Accommodaties"><i class="material-icons">home</i>Accommodaties</a></li>

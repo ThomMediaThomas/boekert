@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $latestBookings = Booking::orderBy('created_at', 'DESC')->limit(5)->get();
+        $bookingsArrivingToday = Booking::dateFrom(date('d-m-Y'))->orderBy('created_at', 'DESC')->limit(5)->get();
+        $bookingsLeavingToday = Booking::dateTo(date('d-m-Y'))->orderBy('created_at', 'DESC')->limit(5)->get();
+        $bookingsUnattached = Booking::accommodationId(null)->orderBy('created_at', 'DESC')->limit(5)->get();
+
+        return view('home.index', [
+            'latestBookings' => $latestBookings,
+            'bookingsArrivingToday' => $bookingsArrivingToday,
+            'bookingsLeavingToday' => $bookingsLeavingToday,
+            'bookingsUnattached' => $bookingsUnattached
+        ]);
     }
 }

@@ -68,7 +68,11 @@ class BookingService
             $booking->camping_type = $request->camping_type;
         }
 
-        $booking->accommodation_id = $request->accommodation_id;
+        if ($request->accommodation_id == 0) {
+            $booking->accommodation_id = null;
+        } else {
+            $booking->accommodation_id = $request->accommodation_id;
+        }
 
         $booking->save();
         return $booking;
