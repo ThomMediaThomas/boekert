@@ -36,7 +36,7 @@ var Calendar = function () {
 
             var style = 'top: ' + posTop + 'px; left: ' + posLeft + 'px;' + 'width: ' + width + 'px;';
 
-            var bookingHtml = '<a class="' + self.getBookingClass(booking) + '" href="' + self.getBookingLink(booking) + '" style="' + style +'">';
+            var bookingHtml = '<a data-id="' + booking.id + '" title="' + self.getBookingHover(booking) + '" class="' + self.getBookingClass(booking) + '" href="' + self.getBookingLink(booking) + '" style="' + style +'">';
             bookingHtml += self.getBookingTitle(booking);
             bookingHtml += '</a>';
 
@@ -45,15 +45,13 @@ var Calendar = function () {
     };
 
     self.getBookingTitle = function (booking) {
-        var text = '<strong>';
+        var text = '';
 
         if (booking.customer) {
             text += booking.customer.firstname[0] + '. ' + booking.customer.lastname;
         } else {
             text += booking.boekert_id;
         }
-
-        text += '</strong>'
 
         return text;
     };
@@ -64,6 +62,15 @@ var Calendar = function () {
 
     self.getBookingClass = function (booking) {
         return 'attached-booking type-' + booking.type;
+    };
+
+    self.getBookingHover = function (booking) {
+        var title = self.getBookingTitle(booking);
+
+        title += ' (' + booking.date_from + ' - ' + booking.date_to + ')';
+
+        return title;
+
     };
 
     self.getDateFromTd = function (booking) {
