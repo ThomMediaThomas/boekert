@@ -54,6 +54,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="card pink lighten-4">
+                    <div class="card-content">
+                        <span class="card-title"><i class="material-icons">note</i> Interne notities</span>
+                        <p class="with-margin"><strong>Opgelet!</strong> De notities die je hier invult zijn <u>niet</u> zichtbaar voor de klant en zijn bedoeld voor interne doeleinden.</p>
+                        <div class="row">
+                            <div class="col s12 input-field">
+                                <label for="notes">Notities</label>
+                                <textarea class="materialize-textarea {{ $errors->has('notes') ? ' invalid' : '' }}" id="notes" name="notes">{{ $booking->notes }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col s4">
                 <div class="card blue">

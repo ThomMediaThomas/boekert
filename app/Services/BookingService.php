@@ -44,6 +44,7 @@ class BookingService
 
         $booking->accommodation_id = $request->accommodation_id;
         $booking->customer_id = $customerId;
+        $booking->notes = notes;
 
         $booking->save();
         return $booking;
@@ -73,6 +74,8 @@ class BookingService
         } else {
             $booking->accommodation_id = $request->accommodation_id;
         }
+
+        $booking->notes = $request->notes;
 
         $booking->save();
         return $booking;

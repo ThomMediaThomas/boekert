@@ -50,6 +50,18 @@
                 <?php echo View::make('customers/elements/form'); ?>
             </div>
         </div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title"><i class="material-icons">note</i> Interne notities</span>
+                <p class="with-margin"><strong>Opgelet!</strong> De notities die je hier invult zijn <u>niet</u> zichtbaar voor de klant en zijn bedoeld voor interne doeleinden.</p>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="notes">Notities</label>
+                        <textarea class="materialize-textarea {{ $errors->has('notes') ? ' invalid' : '' }}" id="notes" name="notes"  value="{{ $booking->notes }}"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
         <input type="submit" class="btn">
     </form>
 @stop
