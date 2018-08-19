@@ -22,14 +22,14 @@ class CalendarController extends Controller
         $availableYears = [date('Y') - 1, date('Y'), date('Y') + 1, date('Y') + 2];
 
         $dates = $this->getDates($currentMonth, $currentYear);
-        $bookingsForPeriod = Booking::allForPeriod($dates[0]['date'], $dates[count($dates)-1]['date'])->get();
+        $bookingsForPeriod = Booking::allForPeriod($dates[0]['date'], $dates[count($dates)-1]['date'])->with('customer')->get();
 
         return view('calendar/index', [
             'currentMonth' => $currentMonth,
             'currentYear' => $currentYear,
             'availableYears' => $availableYears,
             'daysInMonth' => $dates,
-            'accommodations' => Accommodation::all(),
+            'accommodations' => Accommodation::orderBy('name')->get(),
             'bookings' => $bookingsForPeriod
         ]);
     }

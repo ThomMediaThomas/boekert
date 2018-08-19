@@ -7111,9 +7111,29 @@ span.badge.type {
       font-size: 0.9rem; }
 
 #calendar td {
-  border-radius: 0px; }
+  border-radius: 0px;
+  border-right: 1px dotted grey; }
   #calendar td.accommodation {
     background-color: #cfd8dc; }
+
+#calendar tr.unassigned td {
+  background-color: #ef9a9a; }
+
+#calendar-holder {
+  position: relative; }
+  #calendar-holder .attached-booking {
+    position: absolute;
+    border-radius: 3px;
+    opacity: 0.7;
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 5px; }
+    #calendar-holder .attached-booking.type-camping {
+      background-color: #8bc34a; }
+    #calendar-holder .attached-booking.type-chalet {
+      background-color: #009688; }
+    #calendar-holder .attached-booking:hover {
+      opacity: 1; }
 
 p.with-margin {
   margin-bottom: 20px !important; }

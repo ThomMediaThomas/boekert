@@ -19,4 +19,9 @@ $(document).ready(function(){
             $(this).fadeOut();
         });
     }
+
+    if($('#calendar') && BOOKINGS) {
+        var calendar = new Calendar();
+        calendar.init();
+    }
 });

@@ -38,11 +38,8 @@
             </div>
         </form>
     </div>
-
-    @foreach ($bookings as $booking)
-        {{ $booking->date_from }} - {{ $booking->date_to }}<br />
-    @endforeach
-    <table id="calendar" class="browser-default">
+    <div id="calendar-holder">
+        <table id="calendar" class="browser-default">
         <thead>
             <th class="accommodation">Accommodatie</th>
             @foreach ($daysInMonth as $day)
@@ -57,12 +54,27 @@
                 <tr>
                     <td class="accommodation">{{ $accommodation->name }}</td>
                     @foreach ($daysInMonth as $day)
-                        <td class="date">
-                            -
+                        <td class="date"
+                            data-acc_id="{{ $accommodation->id }}"
+                            data-date="{{ $day['date'] }}">
                         </td>
                     @endforeach
                 </tr>
             @endforeach
+            <tr class="unassigned">
+                <td class="accommodation">Niet toegewezen!</td>
+                @foreach ($daysInMonth as $day)
+                    <td class="date"
+                        data-acc_id="null"
+                        data-date="{{ $day['date'] }}">
+                    </td>
+                @endforeach
+            </tr>
         </tbody>
     </table>
+        <div id="calendar-bookings"></div>
+    </div>
+    <script type="text/javascript">
+        var BOOKINGS = JSON.parse('{!! json_encode($bookings) !!}');
+    </script>
 @stop
