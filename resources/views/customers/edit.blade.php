@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2>{{ $customer->firstname }} {{ $customer->lastname }} bewerken</h2>
+    <h4>{{ $customer->firstname }} {{ $customer->lastname }} bewerken</h4>
     <form method="POST" action="{{ url("/customers/{$customer->id}") }}" id="create-customer">
         <input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}

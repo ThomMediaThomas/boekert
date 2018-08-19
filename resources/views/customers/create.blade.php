@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2>Nieuwe klant</h2>
+    <h4>Nieuwe klant</h4>
     <form method="POST" action="{{url('customers')}}" id="create-customer">
         {{ csrf_field() }}
         <div class="card">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2>{{ $booking->boekert_id }} bewerken</h2>
+    <h4>{{ $booking->boekert_id }} bewerken</h4>
     <form method="POST" action="{{ url("/bookings/{$booking->id}") }}" id="create-booking">
         <input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}
