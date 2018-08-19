@@ -20,7 +20,7 @@ $(document).ready(function(){
         });
     }
 
-    if($('#calendar') && BOOKINGS) {
+    if($('#calendar')) {
         var calendar = new Calendar();
         calendar.init();
     }

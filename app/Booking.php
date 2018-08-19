@@ -89,4 +89,13 @@ class Booking extends Model
                     ->where('date_to', '<=', $to);
             });
     }
+
+    /**
+     * @param $query
+     * @param $value
+     * @return mixed
+     */
+    public function scopeAccommodationId($query, $value) {
+        return $query->where('accommodation_id', $value);
+    }
 }

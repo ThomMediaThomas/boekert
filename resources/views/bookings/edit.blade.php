@@ -80,7 +80,8 @@
                                 <option>-- Maak een keuze --</option>
                                 @foreach ($accommodations as $accommodation)
                                     <option value="{{ $accommodation->id }}"
-                                            <?php if ($booking->accommodation_id == $accommodation->id): ?>selected<?php endif; ?>>{{ $accommodation->name }}</option>
+                                            <?php if ($booking->accommodation_id == $accommodation->id): ?>selected<?php endif; ?>
+                                            <?php if (!$accommodation->available): ?>disabled<?php endif; ?>>{{ $accommodation->name }}</option>
                                 @endforeach
                             </select>
                             <label for="accommodation_id">Accommodatie</label>
