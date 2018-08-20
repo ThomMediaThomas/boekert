@@ -45,6 +45,8 @@ class CalendarController extends Controller
                     'date_short' => date('d', $time),
                     'day' => date('l', $time),
                     'day_short' => date('D', $time),
+                    'today' => date('d-m-Y', $time) == date('d-m-Y'),
+                    'weekend' => date('D', $time) == 'Sat' || date('D', $time) == 'Sun'
                 ];
         }
         return $list;

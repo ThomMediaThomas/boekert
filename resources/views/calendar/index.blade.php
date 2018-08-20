@@ -43,7 +43,7 @@
         <thead>
             <th class="accommodation">Accommodatie</th>
             @foreach ($daysInMonth as $day)
-                <th class="date">
+                <th class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>">
                     <span>{{ $day['day_short'] }}</span>
                     <strong>{{ $day['date_short'] }}</strong>
                 </th>
@@ -54,7 +54,7 @@
                 <tr>
                     <td class="accommodation">{{ $accommodation->name }}</td>
                     @foreach ($daysInMonth as $day)
-                        <td class="date"
+                        <td class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>"
                             data-acc_id="{{ $accommodation->id }}"
                             data-date="{{ $day['date'] }}">
                         </td>

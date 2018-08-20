@@ -7107,17 +7107,25 @@ span.badge.type {
   #calendar th.date {
     text-align: center;
     min-width: 40px; }
+    #calendar th.date.today {
+      background-color: #00acc1; }
+    #calendar th.date.weekend {
+      background-color: #ffa726; }
     #calendar th.date strong, #calendar th.date span {
       display: block; }
     #calendar th.date span {
       font-size: 0.7rem;
-      color: #90a4ae; }
+      color: rgba(255, 255, 255, 0.5); }
     #calendar th.date strong {
       font-size: 0.9rem; }
 
 #calendar td {
   border-radius: 0px;
   border-right: 1px dotted grey; }
+  #calendar td.date.today {
+    background-color: #c1f8ff; }
+  #calendar td.date.weekend {
+    background-color: #ffe5bf; }
   #calendar td.accommodation {
     background-color: #cfd8dc; }
 
