@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <label for="notes">Notities</label>
-                        <textarea class="materialize-textarea {{ $errors->has('notes') ? ' invalid' : '' }}" id="notes" name="notes"  value="{{ $booking->notes }}"></textarea>
+                        <textarea class="materialize-textarea {{ $errors->has('notes') ? ' invalid' : '' }}" id="notes" name="notes"  value="{{ old('notes') }}"></textarea>
                     </div>
                 </div>
             </div>
