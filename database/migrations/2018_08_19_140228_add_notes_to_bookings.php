@@ -14,7 +14,7 @@ class AddNotesToBookings extends Migration
     public function up()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->longText('notes');
+            $table->longText('notes')->nullable();
         });
     }
 
