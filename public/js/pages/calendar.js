@@ -31,10 +31,10 @@ var Calendar = function () {
                 holderOffset = self.$calendarHolder.offset(),
                 fromOffset = $from.offset(),
                 toOffset = $to.offset(),
-                posLeft = fromOffset.left - holderOffset.left,
-                posRight = toOffset.left - holderOffset.left,
+                posLeft = fromOffset.left - holderOffset.left + ($from.outerWidth()/2),
+                posRight = toOffset.left - holderOffset.left + ($from.outerWidth()/2),
                 posTop = fromOffset.top - holderOffset.top,
-                width = posRight - posLeft + $to.outerWidth();
+                width = posRight - posLeft;
 
             var style = 'top: ' + posTop + 'px; left: ' + posLeft + 'px;' + 'width: ' + width + 'px;';
 
