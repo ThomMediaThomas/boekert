@@ -2,7 +2,7 @@
     <div class="input-field col s6">
         <label for="firstname">Voornaam/voorletters</label>
         <input id="firstname" type="text" class="{{ $errors->has('firstname') ? ' invalid' : '' }}" name="firstname"
-               value="{{ old('firstname') }}" required>
+               value="{{ old('firstname') }}">
     </div>
     <div class="input-field col s6">
         <label for="lastname">Achternaam</label>
@@ -14,24 +14,24 @@
     <div class="input-field col s9">
         <label for="street">Straatnaam</label>
         <input id="street" type="text" class="{{ $errors->has('street') ? ' invalid' : '' }}" name="street"
-               value="{{ old('street') }}" required>
+               value="{{ old('street') }}">
     </div>
     <div class="input-field col s3">
         <label for="housenumber">Huisnummer</label>
         <input id="housenumber" type="text" class="{{ $errors->has('housenumber') ? ' invalid' : '' }}"
-               name="housenumber" value="{{ old('housenumber') }}" required>
+               name="housenumber" value="{{ old('housenumber') }}">
     </div>
 </div>
 <div class="row">
     <div class="input-field col s4">
         <label for="zip">Postcode</label>
         <input id="zip" type="text" class="{{ $errors->has('zip') ? ' invalid' : '' }}" name="zip"
-               value="{{ old('zip') }}" required>
+               value="{{ old('zip') }}">
     </div>
     <div class="input-field col s8">
         <label for="city">Stad</label>
         <input id="city" type="text" class="{{ $errors->has('city') ? ' invalid' : '' }}" name="city"
-               value="{{ old('city') }}" required>
+               value="{{ old('city') }}">
     </div>
 </div>
 <div class="row">

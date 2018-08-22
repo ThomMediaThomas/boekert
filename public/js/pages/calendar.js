@@ -50,7 +50,8 @@ var Calendar = function () {
         var text = '';
 
         if (booking.customer) {
-            text += booking.customer.firstname[0] + '. ' + booking.customer.lastname;
+            var firstName = booking.customer.firstname ? booking.customer.firstname[0] + '. ' : '';
+            text += firstName + booking.customer.lastname;
         } else {
             text += booking.boekert_id;
         }

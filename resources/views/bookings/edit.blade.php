@@ -139,11 +139,18 @@
                                     {{ $booking->customer->firstname }} {{ $booking->customer->lastname }} ({{ $booking->customer->country }})
                                 </a>
                             </strong><br />
-                            <span>{{ $booking->customer->street }} {{ $booking->customer->housenumber }}</span><br/>
-                            <span>{{ $booking->customer->zipt }} {{ $booking->customer->city }}
-                                ({{ $booking->customer->country }})</span><br />
-                            <span><i class="material-icons tiny">call</i> {{ $booking->customer->phone }}</span><br />
-                            <span><i class="material-icons tiny">email</i> {{ $booking->customer->email }}</span>
+                            @if ($booking->customer->street || $booking->customer->housenumber)
+                                <span>{{ $booking->customer->street }} {{ $booking->customer->housenumber }}</span><br/>
+                            @endif
+                            @if ($booking->customer->zip || $booking->customer->city || $booking->customer->country)
+                                <span>{{ $booking->customer->zip }} {{ $booking->customer->city }} ({{ $booking->customer->country }})</span><br />
+                            @endif
+                            @if ($booking->customer->phone)
+                                <span><i class="material-icons tiny">call</i> {{ $booking->customer->phone }}</span><br />
+                            @endif
+                            @if ($booking->customer->phone)
+                                <span><i class="material-icons tiny">email</i> {{ $booking->customer->email }}</span>
+                            @endif
                         </div>
                     </div>
                 @endif
