@@ -44,7 +44,7 @@ class BookingService
 
         $booking->accommodation_id = $request->accommodation_id;
         $booking->customer_id = $customerId;
-        $booking->notes = notes;
+        $booking->notes = $request->notes;
 
         $booking->save();
         return $booking;
@@ -76,6 +76,25 @@ class BookingService
         }
 
         $booking->notes = $request->notes;
+
+        if ($request->checked_in) {
+            if ($booking->checked_in != $request->checked_in) {
+                $booking->checked_in_at = date('Y-m-d H:i:s');
+            }
+
+            $booking->checked_in = $request->checked_in;
+        } else  {
+            $booking->checked_in = 0;
+        }
+
+        if ($request->checked_out) {
+            if ($booking->checked_out != $request->checked_out) {
+                $booking->checked_out_at = date('Y-m-d H:i:s');
+            }
+            $booking->checked_out = $request->checked_out;
+        } else  {
+            $booking->checked_out = 0;
+        }
 
         $booking->save();
         return $booking;

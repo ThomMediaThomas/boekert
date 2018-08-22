@@ -81,6 +81,36 @@
                         </p>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">In-/uitchecken</span>
+                        <div class="input-field">
+                            <div class="switch">
+                                <label>
+                                    Ingecheckt:
+                                    <input type="checkbox" name="checked_in" value="1" <?php if ($booking->checked_in): ?>checked="checked"<?php endif; ?>>
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                            @if ($booking->checked_in)
+                                <span class="small-info"><i class="material-icons">info</i> ingecheckt op {{ $booking->checked_in_at }}</span>
+                            @endif
+                        </div>
+                        <div class="divider"></div>
+                        <div class="input-field">
+                            <div class="switch">
+                                <label>
+                                    Uitgecheckt:
+                                    <input type="checkbox" name="checked_out" value="1" <?php if ($booking->checked_out): ?>checked="checked"<?php endif; ?>>
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                            @if ($booking->checked_out)
+                                <span class="small-info"><i class="material-icons">info</i> uitgecheckt op {{ $booking->checked_out_at }}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 <div class="card amber lighten-4">
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">edit_location</i> Koppelen</span>

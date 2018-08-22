@@ -21,3 +21,16 @@ ul.button-list {
   }
 }
 
+.small-info {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: lightgray;
+  display: block;
+  margin-top: 10px;
+
+  .material-icons {
+    position: relative;
+    top: 2px;
+    font-size: 1.2em;
+  }
+}

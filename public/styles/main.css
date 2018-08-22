@@ -7182,3 +7182,14 @@ a:hover {
 
 ul.button-list li {
   margin-bottom: 10px; }
+
+.small-info {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: lightgray;
+  display: block;
+  margin-top: 10px; }
+  .small-info .material-icons {
+    position: relative;
+    top: 2px;
+    font-size: 1.2em; }
