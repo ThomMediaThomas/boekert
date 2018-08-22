@@ -6,4 +6,34 @@ header, main, footer {
   header, main, footer {
     padding-left: 0;
   }
+
+  #collapse-sidebar {
+    left: 10px;
+  }
+}
+
+header, main, footer  {
+  &.sidebar-closed  {
+    padding-left: 0px;
+  }
+}
+
+#collapse-sidebar {
+  position: absolute;
+  top: 10px;
+  left: 300 + 10px;
+
+  .close { display: block; }
+  .open { display: none; }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.sidebar-closed {
+    left: 10px;
+
+    .close { display: none; }
+    .open { display: block; }
+  }
 }

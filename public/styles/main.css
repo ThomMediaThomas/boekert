@@ -7025,7 +7025,29 @@ header, main, footer {
 
 @media only screen and (max-width: 992px) {
   header, main, footer {
-    padding-left: 0; } }
+    padding-left: 0; }
+  #collapse-sidebar {
+    left: 10px; } }
+
+header.sidebar-closed, main.sidebar-closed, footer.sidebar-closed {
+  padding-left: 0px; }
+
+#collapse-sidebar {
+  position: absolute;
+  top: 10px;
+  left: 310px; }
+  #collapse-sidebar .close {
+    display: block; }
+  #collapse-sidebar .open {
+    display: none; }
+  #collapse-sidebar:hover {
+    text-decoration: none; }
+  #collapse-sidebar.sidebar-closed {
+    left: 10px; }
+    #collapse-sidebar.sidebar-closed .close {
+      display: none; }
+    #collapse-sidebar.sidebar-closed .open {
+      display: block; }
 
 #login-box {
   max-width: 500px;

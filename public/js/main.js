@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $('.sidenav').sidenav();
+    initSidenav();
+
     $('select').formSelect();
     $('.datepicker').datepicker({
         format: 'dd-mm-yyyy',
@@ -25,3 +26,20 @@ $(document).ready(function(){
         calendar.init();
     }
 });
+
+var SIDENAV_OPEN = true;
+function initSidenav()
+{
+    $('.sidenav').sidenav();
+    $('#collapse-sidebar').on('click', function () {
+        $('header, main, footer, #collapse-sidebar').toggleClass('sidebar-closed');
+
+        if (SIDENAV_OPEN) {
+            $('.sidenav').sidenav('close');
+        } else {
+            $('.sidenav').sidenav('open');
+        }
+
+        SIDENAV_OPEN = !SIDENAV_OPEN;
+    })
+}
