@@ -34,7 +34,7 @@ var Calendar = function () {
                 posLeft = fromOffset.left - holderOffset.left + ($from.outerWidth()/2),
                 posRight = toOffset.left - holderOffset.left + ($from.outerWidth()/2),
                 posTop = fromOffset.top - holderOffset.top,
-                width = posRight - posLeft;
+                width = (posRight != posLeft) ? (posRight - posLeft) : ($from.outerWidth()/2);
 
             var style = 'top: ' + posTop + 'px; left: ' + posLeft + 'px;' + 'width: ' + width + 'px;';
 
