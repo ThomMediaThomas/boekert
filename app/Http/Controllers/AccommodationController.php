@@ -52,7 +52,7 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-        //
+        return view('accommodations/edit', ['accommodation' => $accommodation]);
     }
 
     /**

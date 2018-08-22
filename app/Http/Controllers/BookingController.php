@@ -58,7 +58,10 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        //get accommodations
+        $accommodationService = app(AccommodationService::class);
+        $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
+        return view('bookings/edit', ['booking' => $booking, 'accommodations' => $accommodations]);
     }
 
     /**
