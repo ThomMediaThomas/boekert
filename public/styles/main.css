@@ -7033,7 +7033,7 @@ header.sidebar-closed, main.sidebar-closed, footer.sidebar-closed {
   padding-left: 0px; }
 
 #collapse-sidebar {
-  position: absolute;
+  position: fixed;
   top: 10px;
   left: 310px; }
   #collapse-sidebar .close {

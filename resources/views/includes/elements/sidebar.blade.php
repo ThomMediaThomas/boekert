@@ -34,4 +34,4 @@
         </li>
     @endif
 </ul>
-<a href="#" id="collapse-sidebar" class="btn-floating"><i class="material-icons close">chevron_left</i><i class="material-icons open">chevron_right</i></a>
+<a href="#" id="collapse-sidebar" class="btn-floating" title="Sidebar in-/uitklappen"><i class="material-icons close">chevron_left</i><i class="material-icons open">chevron_right</i></a>
