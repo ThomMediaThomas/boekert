@@ -15,6 +15,8 @@ var Calendar = function () {
         self.$calendarBookings = $('#calendar-bookings');
 
         self.renderBookings();
+        $('.attached-booking').tooltip();
+
         self.bindEvents();
     };
 
@@ -23,6 +25,7 @@ var Calendar = function () {
     };
 
     self.renderBookings = function () {
+        $('.attached-booking').tooltip('destroy');
         self.$calendarBookings.html('');
 
         _.each(self.bookings, function (booking) {
@@ -38,12 +41,14 @@ var Calendar = function () {
 
             var style = 'top: ' + posTop + 'px; left: ' + posLeft + 'px;' + 'width: ' + width + 'px;';
 
-            var bookingHtml = '<a data-id="' + booking.id + '" title="' + self.getBookingHover(booking) + '" class="' + self.getBookingClass(booking) + '" href="' + self.getBookingLink(booking) + '" style="' + style +'">';
+            var bookingHtml = '<a data-id="' + booking.id + '" data-tooltip="' + self.getBookingHover(booking) + '" class="' + self.getBookingClass(booking) + '" href="' + self.getBookingLink(booking) + '" style="' + style +'">';
             bookingHtml += self.getBookingTitle(booking);
             bookingHtml += '</a>';
 
                 self.$calendarBookings.append(bookingHtml);
         });
+
+        $('.attached-booking').tooltip();
     };
 
     self.getBookingTitle = function (booking) {
