@@ -60,7 +60,7 @@ class AccommodationService
         $accommodations = Accommodation::orderBy('name')->get();
 
         $mappedAccommodations = $accommodations->map(function ($accommodation, $key) use ($booking) {
-            $bookedAccommodations = Booking::allForPeriod($booking->date_from, $booking->date_to)->pluck('accommodation_id');
+            $bookedAccommodations = Booking::allForPeriod($booking->date_from, $booking->date_to, false)->pluck('accommodation_id');
             $rejects = 0;
 
             if ($booking->type != $accommodation->type) {

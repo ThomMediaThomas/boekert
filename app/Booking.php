@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateInterval;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
@@ -74,10 +75,15 @@ class Booking extends Model
      * @param $to
      * @return mixed
      */
-    public function scopeAllForPeriod($query, $from, $to)
+    public function scopeAllForPeriod($query, $from, $to, $includeFromAndTo = true)
     {
         $from = DateTime::createFromFormat('d-m-Y', $from);
         $to = DateTime::createFromFormat('d-m-Y', $to);
+
+        if (!$includeFromAndTo) {
+            $from->add(new DateInterval('P1D'));
+            $to->sub(new DateInterval('P1D'));
+        }
 
         return $query
             ->where(function ($query) use ($from, $to){
