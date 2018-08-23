@@ -1,3 +1,4 @@
+@inject('labels', 'App\Services\LabelService')
 @extends('layouts.app')
 @section('content')
     <h4>Alle accommodaties <a href="{{url('accommodations/create')}}" title="Nieuwe accommodatie maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h4>
@@ -16,9 +17,7 @@
                     <td>{{ $accommodation->id }}</td>
                     <td>
                         {{ $accommodation->name }}
-                        <span class="badge type type-{{ $accommodation->type }} subtype-{{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}">
-                            <strong>{{ $accommodation->type }}</strong> | {{ $accommodation->camping_type }}{{ $accommodation->chalet_type }}
-                        </span>
+                        {!!  $labels->getTypeLabel($accommodation) !!}
                     </td>
                     <td>{{ $accommodation->field_number }}</td>
                     <td class="action-cell">

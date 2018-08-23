@@ -1,3 +1,4 @@
+@inject('labels', 'App\Services\LabelService')
 @extends('layouts.app')
 @section('content')
     <h4>Alle boekingen <a href="{{url('bookings/create')}}" title="Nieuwe boeking maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h4>
@@ -17,9 +18,7 @@
                 <tr>
                     <td>
                         <a href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">{{ $booking->boekert_id }}</a>
-                        <span class="badge type type-{{ $booking->type }} subtype-{{ $booking->camping_type }}{{ $booking->chalet_type }}">
-                            <strong>{{ $booking->type }}</strong> | {{ $booking->camping_type }}{{ $booking->chalet_type }}
-                        </span>
+                        {!!  $labels->getTypeLabel($booking) !!}
                     </td>
                     <td>{{ $booking->date_from }}</td>
                     <td>{{ $booking->date_to }}</td>
