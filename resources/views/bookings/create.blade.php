@@ -46,6 +46,34 @@
         </div>
         <div class="card">
             <div class="card-content">
+                <span class="card-title"><i class="material-icons">hotel</i> Bezetting</span>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">face</i>
+                        <label for="adults">Aantal volwassenen</label>
+                        <input id="adults" type="text" class="{{ $errors->has('adults') ? ' invalid' : '' }}" name="adults" value="{{ old('adults') }}" required>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">child_care</i>
+                        <label for="children">Aantal kinderen</label>
+                        <input id="children" type="text" class="{{ $errors->has('children') ? ' invalid' : '' }}" name="children" value="{{ old('children') }}" required>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">pets</i>
+                        <label for="pets">Aantal honden</label>
+                        <input id="pets" type="text" class="{{ $errors->has('pets') ? ' invalid' : '' }}" name="pets" value="{{ old('pets') }}" required>
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">car</i>
+                        <i class="material-icons prefix">directions_car</i>
+                        <label for="cars">Aantal extra auto's</label>
+                        <input id="cars" type="text" class="{{ $errors->has('cars') ? ' invalid' : '' }}" name="cars" value="{{ old('cars') }}" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
                 <span class="card-title"><i class="material-icons">account_box</i> Personalia</span>
                 <?php echo View::make('customers/elements/form'); ?>
             </div>
