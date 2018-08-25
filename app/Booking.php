@@ -50,6 +50,27 @@ class Booking extends Model
     /**
      * @param $query
      * @param $value
+     * @return $query
+     */
+    public function scopeTextSearch($query, $value)
+    {
+        if ($value) {
+            $likeValue = '%' . $value . '%';
+            return $query
+                ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+                ->where('customers.firstname', 'like', $likeValue)
+                ->orWhere('customers.lastname', 'like', $likeValue)
+                ->orWhere('customers.email', 'like', $likeValue)
+                ->orWhere('customers.phone', 'like', $likeValue)
+                ->orWhere('boekert_id', 'like', $likeValue);
+        } else {
+            return $query;
+        }
+    }
+
+    /**
+     * @param $query
+     * @param $value
      * @return mixed
      */
     public function scopeBoekertId($query, $value) {

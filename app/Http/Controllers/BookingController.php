@@ -41,6 +41,11 @@ class BookingController extends Controller
             $bookings->customer($request->get('customer'));
         }
 
+        if ($request->get('text')) {
+            $filters['text'] = $request->get('text');
+            $bookings->textSearch($request->get('text'));
+        }
+
 
         return view('bookings/index', [
             'bookings' => $bookings->get(),

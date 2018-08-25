@@ -1,7 +1,7 @@
 @extends('layouts.app-full')
 @section('content')
     <h4>Kalender ({{$currentMonth}}/{{$currentYear}})</h4>
-    <div class="card-panel filter-form">
+    <div class="filter-form">
         <form method="GET" action="{{ url('calendar') }}" id="filter-calendar">
             {{ csrf_field() }}
             <div class="row">

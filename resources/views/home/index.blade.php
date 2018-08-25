@@ -16,6 +16,9 @@
             </div>
         </div>
         <div class="col s8">
+            <?php echo View::make('home/elements/jump'); ?>
+        </div>
+        <div class="col s12">
             <?php echo View::make('home/elements/latest', ['bookings' => $latestBookings]); ?>
         </div>
         <div class="col s6">
