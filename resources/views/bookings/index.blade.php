@@ -2,6 +2,9 @@
 @extends('layouts.app')
 @section('content')
     <h4>Alle boekingen <a href="{{url('bookings/create')}}" title="Nieuwe boeking maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h4>
+
+    <?php echo View::make('bookings/elements/filters', ['filter' => $filter]); ?>
+
     <table class="striped higlight sortable compact" id="bookings-table">
         <thead>
             <tr>

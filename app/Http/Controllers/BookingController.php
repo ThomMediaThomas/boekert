@@ -13,12 +13,39 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bookings = Booking::all();
-        return view('bookings/index', ['bookings' => $bookings]);
+        $bookings = Booking::whereNotNull('boekert_id');
+        $filters = [];
+
+        if ($request->get('boekert_id')) {
+            $filters['boekert_id'] = $request->get('boekert_id');
+            $bookings->boekertId($request->get('boekert_id'));
+        }
+
+        if ($request->get('date_from')) {
+            $filters['date_from'] = $request->get('date_from');
+            $bookings->dateFrom($request->get('date_from'));
+        }
+
+        if ($request->get('date_to')) {
+            $filters['date_to'] = $request->get('date_to');
+            $bookings->dateTo($request->get('date_to'));
+        }
+
+        if ($request->get('customer')) {
+            $filters['customer'] = $request->get('customer');
+            $bookings->customer($request->get('customer'));
+        }
+
+
+        return view('bookings/index', [
+            'bookings' => $bookings->get(),
+            'filter' => $filters
+        ]);
     }
 
     /**

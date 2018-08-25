@@ -52,6 +52,20 @@ class Booking extends Model
      * @param $value
      * @return mixed
      */
+    public function scopeBoekertId($query, $value) {
+        if ($value) {
+            $likeValue = '%' . $value . '%';
+            return $query->where('boekert_id', 'like', $likeValue);
+        } else {
+            return $query;
+        }
+    }
+
+    /**
+     * @param $query
+     * @param $value
+     * @return mixed
+     */
     public function scopeDateFrom($query, $value)
     {
         $from = DateTime::createFromFormat('d-m-Y', $value);
@@ -96,6 +110,26 @@ class Booking extends Model
                     ->where('date_to', '>=', $from)
                     ->where('date_to', '<=', $to);
             });
+    }
+
+    /**
+     * @param $query
+     * @param $value
+     * @return mixed
+     */
+    public function scopeCustomer($query, $value) {
+        if ($value) {
+            $likeValue = '%' . $value . '%';
+
+            return $query
+                ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+                ->where('customers.firstname', 'like', $likeValue)
+                ->orWhere('customers.lastname', 'like', $likeValue)
+                ->orWhere('customers.email', 'like', $likeValue)
+                ->orWhere('customers.phone', 'like', $likeValue);
+        } else {
+            return $query;
+        }
     }
 
     /**
