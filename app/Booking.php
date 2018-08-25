@@ -104,6 +104,20 @@ class Booking extends Model
         return $query->where('date_to', $to->format('Y-m-d'));
     }
 
+
+    /**
+     * @param $query
+     * @param $value
+     * @return mixed
+     */
+    public function scopeType($query, $value) {
+        if ($value && $value != 'all') {
+            return $query->where('type', $value);
+        } else {
+            return $query;
+        }
+    }
+
     /**
      * @param $query
      * @param $from
