@@ -22,6 +22,8 @@
                     <td>
                         <a href="{{ url("/bookings/{$booking->id}/edit") }}" title="Boeking bewerken">{{ $booking->boekert_id }}</a>
                         {!!  $labels->getTypeLabel($booking) !!}
+                        {!!  $labels->getCheckInLabel($booking) !!}
+                        {!!  $labels->getCheckOutLabel($booking) !!}
                     </td>
                     <td>{{ $booking->date_from }}</td>
                     <td>{{ $booking->date_to }}</td>

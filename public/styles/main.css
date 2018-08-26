@@ -7096,7 +7096,7 @@ table.compact td, table.compact th {
   padding: 12px;
   cursor: pointer; }
 
-span.badge.type {
+span.badge {
   margin-left: 10px;
   font-weight: 300;
   font-size: 0.8rem;
@@ -7106,6 +7106,14 @@ span.badge.type {
     background-color: #8bc34a; }
   span.badge.type-chalet {
     background-color: #009688; }
+  span.badge.checkstatus {
+    background-color: #b0bec5; }
+    span.badge.checkstatus-in {
+      color: #4caf50;
+      background-color: #b5dfb7; }
+    span.badge.checkstatus-out {
+      color: #f44336;
+      background-color: #fccbc7; }
 
 .filter-form {
   border-bottom: 1px solid #e0e0e0;

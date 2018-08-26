@@ -1,17 +1,31 @@
 span.badge {
-  &.type {
-    margin-left: 10px;
-    font-weight: 300;
-    font-size: 0.8rem;
-    color: #fff;
-    border-radius: 2px;
+  margin-left: 10px;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 2px;
 
+  &.type {
     &-camping {
       background-color: $camping;
     }
 
     &-chalet {
       background-color: $chalet;
+    }
+  }
+
+  &.checkstatus {
+    background-color: $lighter;
+
+    &-in {
+      color: $checkedin;
+      background-color: lighten($checkedin, 30%);
+    }
+
+    &-out {
+      color: $checkedout;
+      background-color: lighten($checkedout, 30%);
     }
   }
 }
