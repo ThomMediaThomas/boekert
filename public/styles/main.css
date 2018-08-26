@@ -7116,6 +7116,14 @@ span.badge.type {
 #bookings-table th, #bookings-table td {
   vertical-align: top; }
 
+#changelog {
+  font-size: 0.8rem;
+  font-style: italic; }
+  #changelog td, #changelog th {
+    vertical-align: top; }
+  #changelog ul {
+    margin: 0px; }
+
 #calendar th, #calendar td {
   padding: 5px; }
   #calendar th.accommodation, #calendar td.accommodation {

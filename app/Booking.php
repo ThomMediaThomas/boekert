@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Observers\BookingObserver;
 use DateInterval;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
@@ -22,18 +23,23 @@ class Booking extends Model
 
     protected $includes = [
         'customer',
-        'accommodation'
+        'accommodation',
+        'booking_logs'
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => BookingObserver::class
     ];
 
     public function getDateFromAttribute($value)
     {
-        $dateFrom = DateTime::createFromFormat('Y-m-d', $value);
+        $dateFrom = DateTime::createFromFormat('!Y-m-d', $value);
         return $dateFrom->format('d-m-Y');
     }
 
     public function getDateToAttribute($value)
     {
-        $dateTo = DateTime::createFromFormat('Y-m-d', $value);
+        $dateTo = DateTime::createFromFormat('!Y-m-d', $value);
         return $dateTo->format('d-m-Y');
     }
 
@@ -45,6 +51,11 @@ class Booking extends Model
     public function accommodation()
     {
         return $this->belongsTo(Accommodation::class);
+    }
+
+    public function booking_logs()
+    {
+        return $this->hasMany(BookingLog::class)->orderBy('created_at', 'DESC');
     }
 
     /**

@@ -94,6 +94,30 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><i class="material-icons">history</i> Wijzigingen</span>
+                        <table class="compact" id="changelog">
+                            <thead>
+                                <tr>
+                                    <th>datum</th>
+                                    <th>wijziging</th>
+                                    <th>gebruiker</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($booking->booking_logs as $key => $log)
+                                    <tr>
+                                        <td>{{ $log->created_at }}</td>
+                                        <td>{!! $log->log !!}</td>
+                                        <td>{{ $log->user->username}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="col s4">
                 <div class="card blue">

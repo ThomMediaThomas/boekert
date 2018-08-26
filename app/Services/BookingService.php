@@ -30,9 +30,9 @@ class BookingService
         $booking = new Booking();
         $booking->boekert_id = $this->generateBoekertId();
 
-        $dateFrom = DateTime::createFromFormat('d-m-Y', $request->date_from);
+        $dateFrom = DateTime::createFromFormat('!d-m-Y', $request->date_from);
         $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
-        $dateTo = DateTime::createFromFormat('d-m-Y', $request->date_to);
+        $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
         $booking->date_to = $dateTo->format('Y-m-d H:i:s');
 
         $booking->type = $request->type;
@@ -62,9 +62,9 @@ class BookingService
      */
     public function update(Booking $booking, Request $request)
     {
-        $dateFrom = DateTime::createFromFormat('d-m-Y', $request->date_from);
+        $dateFrom = DateTime::createFromFormat('!d-m-Y', $request->date_from);
         $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
-        $dateTo = DateTime::createFromFormat('d-m-Y', $request->date_to);
+        $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
         $booking->date_to = $dateTo->format('Y-m-d H:i:s');
 
         $booking->type = $request->type;
