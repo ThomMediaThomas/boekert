@@ -16,13 +16,27 @@
             </form>
         </div>
     </li>
-    <li><a href="{{url('home')}}" title="Dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
-    <li><a href="{{url('bookings')}}" title="Boekingen"><i class="material-icons">receipt</i>Boekingen</a></li>
-    <li><a href="{{url('calendar')}}" title="Kalender"><i class="material-icons">date_range</i>Kalender</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Beheer</a></li>
-    <li><a href="{{url('accommodations')}}" title="Accommodaties"><i class="material-icons">home</i>Accommodaties</a></li>
-    <li><a href="{{url('customers')}}" title="Klanten"><i class="material-icons">contacts</i>Klanten</a></li>
+    <li <?php if (Request::is('home')): ?>class="active"<?php endif; ?>>
+        <a href="{{url('home')}}" title="Dashboard"><i class="material-icons">dashboard</i>Dashboard</a>
+    </li>
+    <li <?php if (Request::is('bookings')): ?>class="active"<?php endif; ?>>
+        <a href="{{url('bookings')}}" title="Boekingen"><i class="material-icons">receipt</i>Boekingen</a>
+    </li>
+    <li <?php if (Request::is('calendar')): ?>class="active"<?php endif; ?>>
+        <a href="{{url('calendar')}}" title="Kalender"><i class="material-icons">date_range</i>Kalender</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a class="subheader">Beheer</a>
+    </li>
+    <li <?php if (Request::is('accommodations')): ?>class="active"<?php endif; ?>>
+        <a href="{{url('accommodations')}}" title="Accommodaties"><i class="material-icons">home</i>Accommodaties</a>
+    </li>
+    <li <?php if (Request::is('customers')): ?>class="active"<?php endif; ?>>
+        <a href="{{url('customers')}}" title="Klanten"><i class="material-icons">contacts</i>Klanten</a>
+    </li>
     @else
         <li>
             <div class="user-view">
