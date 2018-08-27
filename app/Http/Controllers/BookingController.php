@@ -84,7 +84,7 @@ class BookingController extends Controller
         $bookingService = app(BookingService::class);
         $booking = $bookingService->createWithCustomer($request, $customer->id);
 
-        return redirect('bookings')->with('success', 'Boeking succesvol toegevoegd');
+        return redirect('bookings/' . $booking->id . '/edit')->with('success', 'Boeking succesvol toegevoegd');
     }
 
     /**
@@ -128,7 +128,7 @@ class BookingController extends Controller
         $bookingService = app(BookingService::class);
         $booking = $bookingService->update($booking, $request);
 
-        return redirect('bookings')->with('success', 'Booking succesvol aangepast');
+        return redirect('bookings/' . $booking->id . '/edit')->with('success', 'Booking succesvol aangepast');
     }
 
     /**

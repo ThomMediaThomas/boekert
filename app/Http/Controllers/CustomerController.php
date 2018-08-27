@@ -41,7 +41,7 @@ class CustomerController extends Controller
         $customerService = app(CustomerService::class);
         $customer = $customerService->create($request);
 
-        return redirect('customers')->with('success', 'Klant succesvol toegevoegd');
+        return redirect('customers/' . $customer-> id . '/edit')->with('success', 'Klant succesvol toegevoegd');
     }
 
     /**
@@ -79,7 +79,7 @@ class CustomerController extends Controller
         $customerService = app(CustomerService::class);
         $customer = $customerService->update($customer, $request);
 
-        return redirect('customers')->with('success', 'Klant succesvol aangepast');
+        return redirect('customers/' . $customer-> id . '/edit')->with('success', 'Klant succesvol aangepast');
     }
 
     /**

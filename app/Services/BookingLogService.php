@@ -21,6 +21,7 @@ class BookingLogService
         $log->log = $message;
         $log->booking_id = $booking->id;
         $log->user_id = \Auth::user()->id;
-        return $log->save();
+        $log->save();
+        return $log;
     }
 }

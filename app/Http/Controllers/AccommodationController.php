@@ -41,7 +41,7 @@ class AccommodationController extends Controller
         $accommodationService = app(AccommodationService::class);
         $accommodation = $accommodationService->create($request);
 
-        return redirect('accommodations')->with('success', 'Accommodatie succesvol toegevoegd');
+        return redirect('accommodations/' . $accommodation->id . '/edit')->with('success', 'Accommodatie succesvol toegevoegd');
     }
 
     /**
@@ -79,7 +79,7 @@ class AccommodationController extends Controller
         $accommodationService = app(AccommodationService::class);
         $accommodation = $accommodationService->update($accommodation, $request);
 
-        return redirect('accommodations')->with('success', 'Accommodatie succesvol aangepast');
+        return redirect('accommodations/' . $accommodation->id . '/edit')->with('success', 'Accommodatie succesvol aangepast');
     }
 
     /**
