@@ -1,15 +1,11 @@
 var Calendar = function () {
     var self = this;
 
-    self.bookings = null;
     self.$calendar = null;
     self.$calendarHolder = null;
     self.$calendarBookings = null;
 
     self.init = function () {
-        if (typeof BOOKINGS !== 'undefined') {
-            self.bookings = BOOKINGS;
-        }
         self.$calendar = $('#calendar');
         self.$calendarHolder = $('#calendar-holder');
         self.$calendarBookings = $('#calendar-bookings');
@@ -25,12 +21,10 @@ var Calendar = function () {
     };
 
     self.renderBookings = function () {
-        $('.attached-booking').tooltip('destroy');
-        self.$calendarBookings.html('');
-
-        _.each(self.bookings, function (booking) {
-            var $from = self.getDateFromTd(booking),
-                $to = self.getDateToTd(booking),
+        $('a.attached-booking').each(function () {
+            var $booking = $(this);
+            var $from = self.getDateFromTd($booking.attr('data-accommodation_id'), $booking.attr('data-from')),
+                $to = self.getDateToTd($booking.attr('data-accommodation_id'), $booking.attr('data-to')),
                 holderOffset = self.$calendarHolder.offset(),
                 fromOffset = $from.offset(),
                 toOffset = $to.offset(),
@@ -41,61 +35,27 @@ var Calendar = function () {
 
             var style = 'top: ' + posTop + 'px; left: ' + posLeft + 'px;' + 'width: ' + width + 'px;';
 
-            var bookingHtml = '<a data-id="' + booking.id + '" data-tooltip="' + self.getBookingHover(booking) + '" class="' + self.getBookingClass(booking) + '" href="' + self.getBookingLink(booking) + '" style="' + style +'">';
-            bookingHtml += self.getBookingTitle(booking);
-            bookingHtml += '</a>';
-
-                self.$calendarBookings.append(bookingHtml);
+            $booking.attr('style', style);
         });
-
-        $('.attached-booking').tooltip();
     };
 
-    self.getBookingTitle = function (booking) {
-        var text = '';
-
-        if (booking.customer) {
-            var firstName = booking.customer.firstname ? booking.customer.firstname[0] + '. ' : '';
-            text += firstName + booking.customer.lastname;
-        } else {
-            text += booking.boekert_id;
-        }
-
-        return text;
-    };
-
-    self.getBookingLink = function (booking) {
-        return '/bookings/' + booking.id + '/edit';
-    };
-
-    self.getBookingClass = function (booking) {
-        return 'attached-booking type-' + booking.type;
-    };
-
-    self.getBookingHover = function (booking) {
-        var title = self.getBookingTitle(booking);
-
-        title += ' (' + booking.date_from + ' - ' + booking.date_to + ')';
-
-        return title;
-
-    };
-
-    self.getDateFromTd = function (booking) {
-        var $from = $('td.date[data-acc_id="' + booking.accommodation_id + '"][data-date="' + booking.date_from + '"]');
+    self.getDateFromTd = function (accommodation_id, date_from) {
+        var accommodation_id = accommodation_id ? accommodation_id : 'null';
+            $from = $('td.date[data-acc_id="' + accommodation_id + '"][data-date="' + date_from + '"]');
 
         if ($from.length <= 0) {
-            $from = $('td.date[data-acc_id="' + booking.accommodation_id + '"]').first();
+            $from = $('td.date[data-acc_id="' + accommodation_id + '"]').first();
         }
 
         return $from;
     };
 
-    self.getDateToTd = function (booking) {
-        var $to = $('td.date[data-acc_id="' + booking.accommodation_id + '"][data-date="' + booking.date_to + '"]');
+    self.getDateToTd = function (accommodation_id, date_to) {
+        var accommodation_id = accommodation_id ? accommodation_id : 'null';
+        var $to = $('td.date[data-acc_id="' + accommodation_id + '"][data-date="' + date_to + '"]');
 
         if ($to.length <= 0) {
-            $to = $('td.date[data-acc_id="' + booking.accommodation_id + '"]').last();
+            $to = $('td.date[data-acc_id="' + accommodation_id + '"]').last();
         }
 
         return $to;

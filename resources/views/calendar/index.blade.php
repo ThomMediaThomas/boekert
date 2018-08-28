@@ -40,41 +40,54 @@
     </div>
     <div id="calendar-holder">
         <table id="calendar" class="browser-default">
-        <thead>
-            <th class="accommodation">Accommodatie</th>
-            @foreach ($daysInMonth as $day)
-                <th class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>">
-                    <span>{{ $day['day_short'] }}</span>
-                    <strong>{{ $day['date_short'] }}</strong>
-                </th>
-            @endforeach
-        </thead>
-        <tbody>
-            @foreach ($accommodations as $accommodation)
-                <tr>
-                    <td class="accommodation">{{ $accommodation->name }}</td>
+            <thead>
+                <th class="accommodation">Accommodatie</th>
+                @foreach ($daysInMonth as $day)
+                    <th class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>">
+                        <span>{{ $day['day_short'] }}</span>
+                        <strong>{{ $day['date_short'] }}</strong>
+                    </th>
+                @endforeach
+            </thead>
+            <tbody>
+                @foreach ($accommodations as $accommodation)
+                    <tr>
+                        <td class="accommodation">{{ $accommodation->name }}</td>
+                        @foreach ($daysInMonth as $day)
+                            <td class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>"
+                                data-acc_id="{{ $accommodation->id }}"
+                                data-date="{{ $day['date'] }}">
+                            </td>
+                        @endforeach
+                    </tr>
+                @endforeach
+                <tr class="unassigned">
+                    <td class="accommodation">Niet toegewezen!</td>
                     @foreach ($daysInMonth as $day)
-                        <td class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>"
-                            data-acc_id="{{ $accommodation->id }}"
+                        <td class="date"
+                            data-acc_id="null"
                             data-date="{{ $day['date'] }}">
                         </td>
                     @endforeach
                 </tr>
-            @endforeach
-            <tr class="unassigned">
-                <td class="accommodation">Niet toegewezen!</td>
-                @foreach ($daysInMonth as $day)
-                    <td class="date"
-                        data-acc_id="null"
-                        data-date="{{ $day['date'] }}">
-                    </td>
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
-        <div id="calendar-bookings"></div>
+            </tbody>
+        </table>
+        <div id="calendar-bookings">
+            @foreach ($bookings as $booking)
+                <a data-id="{{ $booking->id }}"
+                   data-tooltip="{{ $booking->date_from }} tot {{ $booking->date_to }} ({{ $booking->boekert_id }})"
+                   class="attached-booking type-{{ $booking->type }}"
+                   href="/bookings/{{ $booking->id }}/edit"
+                   data-accommodation_id="{{ $booking->accommodation_id }}"
+                   data-from="{{ $booking->date_from }}"
+                   data-to="{{ $booking->date_to }}" >
+                    @if ($booking->customer)
+                        {{ $booking->customer->firstname ? $booking->customer->firstname[0] . '.' : '' }} {{ $booking->customer->lastname }}
+                    @else
+                        {{ $booking->boekert_id }}
+                    @endif
+                </a>
+             @endforeach
+        </div>
     </div>
-    <script type="text/javascript">
-        var BOOKINGS = JSON.parse('{!! json_encode($bookings) !!}');
-    </script>
 @stop
