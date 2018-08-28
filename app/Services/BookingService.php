@@ -16,8 +16,8 @@ class BookingService
     public function generateBoekertId()
     {
         $now = Carbon::now()->timestamp;
-        $randomizer = Str::random(6);
-        return 'B_' . $now . '_' . $randomizer;
+        $randomizer = Str::random(4);
+        return 'B_' . $now . '_' . strtolower($randomizer);
     }
 
     /**
