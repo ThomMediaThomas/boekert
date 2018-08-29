@@ -206,6 +206,31 @@
                         </div>
                     </div>
                 @endif
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><i class="material-icons">play_for_work</i> Bron</span>
+                        <label>
+                            <input name="source" value="phone" type="radio" <?php if ($booking->source == 'phone'): ?>checked<?php endif; ?> />
+                            <span>Telefoon</span>
+                        </label><br />
+                        <label>
+                            <input name="source" value="mail" type="radio" <?php if ($booking->source == 'mail'): ?>checked<?php endif; ?> />
+                            <span>E-mail</span>
+                        </label><br />
+                        <label>
+                            <input name="source" value="desk" type="radio" <?php if ($booking->source == 'desk'): ?>checked<?php endif; ?> />
+                            <span>Balie</span>
+                        </label><br />
+                        <label>
+                            <input name="source" value="site" type="radio" <?php if ($booking->source == 'site'): ?>checked<?php endif; ?> />
+                            <span>Website</span>
+                        </label><br />
+                        <label>
+                            <input name="source" value="other" type="radio" <?php if ($booking->source == 'other'): ?>checked<?php endif; ?> />
+                            <span>Anders</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

@@ -3,6 +3,29 @@
     <h4>Nieuwe boeking</h4>
     <form method="POST" action="{{url('bookings')}}" id="create-booking">
         {{ csrf_field() }}
+        <div class="section">
+            <label>Bron</label><br />
+            <label>
+                <input name="source" value="phone" type="radio" />
+                <span>Telefoon</span>
+            </label>
+            <label>
+                <input name="source" value="mail" type="radio" />
+                <span>E-mail</span>
+            </label>
+            <label>
+                <input name="source" value="desk" type="radio" />
+                <span>Balie</span>
+            </label>
+            <label>
+                <input name="source" value="site" type="radio" />
+                <span>Website</span>
+            </label>
+            <label>
+                <input name="source" value="other" type="radio" />
+                <span>Anders</span>
+            </label>
+        </div>
         <div class="card">
             <div class="card-content">
                 <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>

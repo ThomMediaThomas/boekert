@@ -45,6 +45,7 @@ class BookingService
         $booking->accommodation_id = $request->accommodation_id;
         $booking->customer_id = $customerId;
         $booking->notes = $request->notes;
+        $booking->source = $request->source;
 
         $booking->adults = $request->adults;
         $booking->children = $request->children;
@@ -81,6 +82,7 @@ class BookingService
         }
 
         $booking->notes = $request->notes;
+        $booking->source = $request->source;
 
         if ($request->checked_in) {
             if ($booking->checked_in != $request->checked_in) {
