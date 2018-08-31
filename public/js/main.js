@@ -37,7 +37,7 @@ function initForms() {
             }
         }
     });
-
+    
     if ($('#create-booking').length > 0 || $('#create-accommodation').length > 0) {
         $('select#type').on('change', function () {
             $('.input-field.show-on-change-type').hide();

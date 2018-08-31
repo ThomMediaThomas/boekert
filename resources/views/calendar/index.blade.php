@@ -57,6 +57,9 @@
                             <td class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>"
                                 data-acc_id="{{ $accommodation->id }}"
                                 data-date="{{ $day['date'] }}">
+                                <a class="add-booking-trigger" href="/bookings/create?date_from={{ $day['date'] }}&accommodation_id={{ $accommodation->id }}">
+                                    <i class="material-icons">add</i>
+                                </a>
                             </td>
                         @endforeach
                     </tr>
