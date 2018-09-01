@@ -17,6 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/calendar', 'CalendarController@index');
 
 Route::resource('bookings', 'BookingController');
+Route::get('/bookings/b/{boekert_id}', 'BookingController@editByBoekert');
 Route::resource('customers', 'CustomerController');
 Route::resource('accommodations', 'AccommodationController');
 

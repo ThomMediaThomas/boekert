@@ -28,6 +28,7 @@ function initForms() {
         format: 'dd-mm-yyyy',
         autoClose: true,
         firstDay: 1,
+        showClearBtn: true,
         onSelect: function (value)  {
             var currentName = this.$el.attr('name'),
                 $dateTo = $('input.datepicker[name="date_to"]');
@@ -37,7 +38,7 @@ function initForms() {
             }
         }
     });
-    
+
     if ($('#create-booking').length > 0 || $('#create-accommodation').length > 0) {
         $('select#type').on('change', function () {
             $('.input-field.show-on-change-type').hide();

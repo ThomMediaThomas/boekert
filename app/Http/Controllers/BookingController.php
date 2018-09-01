@@ -102,6 +102,20 @@ class BookingController extends Controller
     }
 
     /**
+     * @param $boekert_id
+     * @return \Illuminate\Http\Response
+     */
+    public function editByBoekert($boekert_id)
+    {
+        $booking = Booking::where('boekert_id', $boekert_id)->first();
+        if ($booking) {
+            return $this->show($booking);
+        } else {
+            return $this->index(new Request);
+        }
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Booking $booking
