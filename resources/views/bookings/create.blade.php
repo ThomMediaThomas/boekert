@@ -3,34 +3,37 @@
     <h4>Nieuwe boeking</h4>
     <form method="POST" action="{{url('bookings')}}" id="create-booking">
         {{ csrf_field() }}
-        <div class="section">
-            <label>Bron</label><br />
-            <label>
-                <input name="source" value="phone" type="radio" checked="checked"/>
-                <span>Telefoon</span>
-            </label>
-            <label>
-                <input name="source" value="mail" type="radio" />
-                <span>E-mail</span>
-            </label>
-            <label>
-                <input name="source" value="desk" type="radio" />
-                <span>Balie</span>
-            </label>
-            <label>
-                <input name="source" value="site" type="radio" />
-                <span>Website</span>
-            </label>
-            <label>
-                <input name="source" value="other" type="radio" />
-                <span>Anders</span>
-            </label>
-        </div>
         <div class="row">
             <div class="col s8">
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>
+                        <div class="row">
+                            <div class="col s12">
+                                <label>Bron</label><br />
+                                <label>
+                                    <input name="source" value="phone" type="radio" checked="checked"/>
+                                    <span>Telefoon</span>
+                                </label>
+                                <label>
+                                    <input name="source" value="mail" type="radio" />
+                                    <span>E-mail</span>
+                                </label>
+                                <label>
+                                    <input name="source" value="desk" type="radio" />
+                                    <span>Balie</span>
+                                </label>
+                                <label>
+                                    <input name="source" value="site" type="radio" />
+                                    <span>Website</span>
+                                </label>
+                                <label>
+                                    <input name="source" value="other" type="radio" />
+                                    <span>Anders</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
                         <div class="row">
                             <div class="input-field col s6">
                                 <label for="date_from">Datum van</label>
@@ -73,22 +76,24 @@
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">hotel</i> Bezetting</span>
                         <div class="row">
-                            <div class="input-field col s3">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix">face</i>
                                 <label for="adults">Aantal volwassenen</label>
                                 <input id="adults" type="text" class="{{ $errors->has('adults') ? ' invalid' : '' }}" name="adults" value="{{ old('adults') }}" required>
                             </div>
-                            <div class="input-field col s3">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix">child_care</i>
                                 <label for="children">Aantal kinderen</label>
                                 <input id="children" type="text" class="{{ $errors->has('children') ? ' invalid' : '' }}" name="children" value="{{ old('children') }}" required>
                             </div>
-                            <div class="input-field col s3">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix">pets</i>
                                 <label for="pets">Aantal honden</label>
                                 <input id="pets" type="text" class="{{ $errors->has('pets') ? ' invalid' : '' }}" name="pets" value="{{ old('pets') }}" required>
                             </div>
-                            <div class="input-field col s3">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix">car</i>
                                 <i class="material-icons prefix">directions_car</i>
                                 <label for="cars">Aantal extra auto's</label>
