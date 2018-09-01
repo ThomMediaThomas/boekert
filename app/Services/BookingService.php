@@ -31,9 +31,9 @@ class BookingService
         $booking->boekert_id = $this->generateBoekertId();
 
         $dateFrom = DateTime::createFromFormat('!d-m-Y', $request->date_from);
-        $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
+        $booking->date_from = $dateFrom->format('Y-m-d');
         $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
-        $booking->date_to = $dateTo->format('Y-m-d H:i:s');
+        $booking->date_to = $dateTo->format('Y-m-d');
 
         $booking->type = $request->type;
         if ($request->type == 'chalet') {
@@ -64,9 +64,9 @@ class BookingService
     public function update(Booking $booking, Request $request)
     {
         $dateFrom = DateTime::createFromFormat('!d-m-Y', $request->date_from);
-        $booking->date_from = $dateFrom->format('Y-m-d H:i:s');
+        $booking->date_from = $dateFrom->format('Y-m-d');
         $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
-        $booking->date_to = $dateTo->format('Y-m-d H:i:s');
+        $booking->date_to = $dateTo->format('Y-m-d');
 
         $booking->type = $request->type;
         if ($request->type == 'chalet') {
