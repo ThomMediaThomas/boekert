@@ -69,8 +69,8 @@ class BookingController extends Controller
     {
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
-        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
-        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
 
         return view('bookings/create', [
             'accommodation_types' => $accommodationTypes,
@@ -112,8 +112,8 @@ class BookingController extends Controller
 
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
-        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
-        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
 
         return view('bookings/edit', [
             'booking' => $booking,
@@ -152,8 +152,8 @@ class BookingController extends Controller
 
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
-        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
-        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
 
         return view('bookings/edit', [
             'booking' => $booking,

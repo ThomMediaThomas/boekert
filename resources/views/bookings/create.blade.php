@@ -46,28 +46,28 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <select id="type" class="{{ $errors->has('type') ? ' invalid' : '' }}" name="type" value="{{ old('type') }}" required>
-                                    <option value="chalet">Huisje huren</option>
-                                    <option value="camping">Kampeerplaats huren</option>
+                                <select id="type" class="{{ $errors->has('type') ? ' invalid' : '' }}" name="type_id" value="{{ old('type_id') }}" required>
+                                    @foreach ($accommodation_types as $accommodation_type)
+                                        <option value="{{ $accommodation_type->id }}" <?php if (old('type') == $accommodation_type->id): ?>selected<?php endif; ?>>{{ $accommodation_type->name }}</option>
+                                    @endforeach
                                 </select>
-                                <label for="type">Type</label>
+                                <label for="type">Soort</label>
                             </div>
-                            <div class="input-field show-on-change-type col s6" id="show-for-chalet">
+                            <div class="input-field show-on-change-type col s6" id="show-for-1">
                                 <select id="chalet_type" class="{{ $errors->has('chalet_type') ? ' invalid' : '' }}" name="chalet_type" value="{{ old('chalet_type') }}">
-                                    <option value="chalet-4">4-persoonshuisje</option>
-                                    <option value="chalet-6">6-persoonshuisje</option>
+                                    @foreach ($accommodation_chalet_types as $accommodation_chalet_type)
+                                        <option value="{{ $accommodation_chalet_type->id }}" <?php if (old('chalet_type') == $accommodation_chalet_type->id): ?>selected<?php endif; ?>>{{ $accommodation_chalet_type->name }}</option>
+                                    @endforeach
                                 </select>
-                                <label for="type">Type huisje</label>
+                                <label for="chalet_type">Type huisje</label>
                             </div>
-                            <div class="input-field show-on-change-type col s6" id="show-for-camping" style="display: none;">
+                            <div class="input-field show-on-change-type col s6" id="show-for-2" style="display: none;">
                                 <select id="camping_type" class="{{ $errors->has('camping_type') ? ' invalid' : '' }}" name="camping_type" value="{{ old('camping_type') }}">
-                                    <option value="tent">Tent</option>
-                                    <option value="folding_car">Vouwwagen</option>
-                                    <option value="camper">Camper</option>
-                                    <option value="caravan">Caravan</option>
-                                    <option value="other">Andes...</option>
+                                    @foreach ($accommodation_camping_types as $accommodation_camping_type)
+                                        <option value="{{ $accommodation_camping_type->id }}" <?php if (old('chalet_type') == $accommodation_camping_type->id): ?>selected<?php endif; ?>>{{ $accommodation_camping_type->name }}</option>
+                                    @endforeach
                                 </select>
-                                <label for="type">Type huisje</label>
+                                <label for="camping_type">Type kampeerplaats</label>
                             </div>
                         </div>
                     </div>
