@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AccommodationSubType;
+use App\AccommodationType;
 use App\Booking;
 use App\Services\AccommodationService;
 use App\Services\BookingService;
@@ -65,7 +67,16 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('bookings/create');
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+
+        return view('bookings/create', [
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
+        ]);
     }
 
     /**
@@ -98,7 +109,19 @@ class BookingController extends Controller
         //get accommodations
         $accommodationService = app(AccommodationService::class);
         $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
-        return view('bookings/edit', ['booking' => $booking, 'accommodations' => $accommodations]);
+
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+
+        return view('bookings/edit', [
+            'booking' => $booking,
+            'accommodations' => $accommodations,
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
+        ]);
     }
 
     /**
@@ -126,7 +149,19 @@ class BookingController extends Controller
         //get accommodations
         $accommodationService = app(AccommodationService::class);
         $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
-        return view('bookings/edit', ['booking' => $booking, 'accommodations' => $accommodations]);
+
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1);
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2);
+
+        return view('bookings/edit', [
+            'booking' => $booking,
+            'accommodations' => $accommodations,
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
+        ]);
     }
 
     /**
