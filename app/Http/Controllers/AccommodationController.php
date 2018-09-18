@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Accommodation;
+use App\AccommodationSubType;
+use App\AccommodationType;
 use App\Services\AccommodationService;
 use Illuminate\Http\Request;
 
@@ -26,7 +28,16 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        return view('accommodations/create');
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
+
+        return view('accommodations/create', [
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
+        ]);
     }
 
     /**
@@ -63,7 +74,17 @@ class AccommodationController extends Controller
      */
     public function edit(Accommodation $accommodation)
     {
-        return view('accommodations/edit', ['accommodation' => $accommodation]);
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
+
+        return view('accommodations/edit', [
+            'accommodation' => $accommodation,
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
+        ]);
     }
 
     /**

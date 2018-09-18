@@ -19,11 +19,14 @@ class AccommodationService
         $accommodation->name = $request->name;
         $accommodation->field_number = $request->field_number;
 
-        $accommodation->type = $request->type;
-        if ($request->type == 'chalet') {
-            $accommodation->chalet_type = $request->chalet_type;
-        } else {
-            $accommodation->camping_type = $request->camping_type;
+        $accommodation->type_id = $request->type_id;
+        if ($request->type_id == 1) {
+            $accommodation->chalet_type_id = $request->chalet_type_id;
+            $accommodation->camping_type_id = null;
+        }
+        if ($request->type_id == 2) {
+            $accommodation->camping_type_id = $request->camping_type_id;
+            $accommodation->chalet_type_id = null;
         }
 
         $accommodation->save();
@@ -40,11 +43,14 @@ class AccommodationService
         $accommodation->name = $request->name;
         $accommodation->field_number = $request->field_number;
 
-        $accommodation->type = $request->type;
-        if ($request->type == 'chalet') {
-            $accommodation->chalet_type = $request->chalet_type;
-        } else {
-            $accommodation->camping_type = $request->camping_type;
+        $accommodation->type_id = $request->type_id;
+        if ($request->type_id == 1) {
+            $accommodation->chalet_type_id = $request->chalet_type_id;
+            $accommodation->camping_type_id = null;
+        }
+        if ($request->type_id == 2) {
+            $accommodation->camping_type_id = $request->camping_type_id;
+            $accommodation->chalet_type_id = null;
         }
 
         $accommodation->save();
@@ -63,15 +69,15 @@ class AccommodationService
             $bookedAccommodations = Booking::allForPeriod($booking->date_from, $booking->date_to, false)->pluck('accommodation_id');
             $rejects = 0;
 
-            if ($booking->type != $accommodation->type) {
+            if ($booking->type_id != $accommodation->type_id) {
                 $rejects++;
             }
 
-            if ($booking->type == 'camping' && $booking->camping_type != 'tent' && $accommodation->camping_type == 'tent') {
+            if ($booking->type->system_name == 'camping' && $booking->camping_type && $booking->camping_type->system_name != 'tent' && $accommodation->camping_type && $accommodation->camping_type->system_name == 'tent') {
                 $rejects++;
             }
 
-            if ($booking->type == 'chalet' && ($booking->chalet_type != $accommodation->chalet_type)) {
+            if ($booking->type->system_name == 'chalet' && ($booking->chalet_type_id != $accommodation->chalet_type_id)) {
                 $rejects++;
             }
 

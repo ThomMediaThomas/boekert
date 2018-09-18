@@ -79,7 +79,7 @@
             @foreach ($bookings as $booking)
                 <a data-id="{{ $booking->id }}"
                    data-tooltip="{{ $booking->date_from }} tot {{ $booking->date_to }} ({{ $booking->boekert_id }})"
-                   class="truncate attached-booking type-{{ $booking->type }}"
+                   class="truncate attached-booking type-{{ $booking->type->system_name }}"
                    href="/bookings/{{ $booking->id }}/edit"
                    data-accommodation_id="{{ $booking->accommodation_id }}"
                    data-from="{{ $booking->date_from }}"

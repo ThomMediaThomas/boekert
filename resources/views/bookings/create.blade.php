@@ -46,7 +46,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <select id="type" class="{{ $errors->has('type_id') ? ' invalid' : '' }}" name="type_id" value="{{ old('type_id') }}" required>
+                                <select id="type_id" class="{{ $errors->has('type_id') ? ' invalid' : '' }}" name="type_id" value="{{ old('type_id') }}" required>
                                     @foreach ($accommodation_types as $accommodation_type)
                                         <option value="{{ $accommodation_type->id }}" <?php if (old('type_id') == $accommodation_type->id): ?>selected<?php endif; ?>>{{ $accommodation_type->name }}</option>
                                     @endforeach
