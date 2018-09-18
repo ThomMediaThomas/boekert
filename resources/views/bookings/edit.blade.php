@@ -9,6 +9,7 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>
+                        {{ $price }}
                         <div class="row">
                             <div class="input-field col s6">
                                 <label for="date_from">Datum van</label>
