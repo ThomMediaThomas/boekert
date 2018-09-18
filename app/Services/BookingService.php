@@ -125,6 +125,22 @@ class BookingService
         $booking->adults = $request->adults;
         $booking->children = $request->children;
 
+        //extras
+        $extras = Extra::all();
+        foreach ($extras as $extra) {
+            if ($request[$extra->system_name]) {
+                BookingExtra::updateOrCreate(
+                    [
+                        'booking_id' => $booking->id,
+                        'extra_id' => $extra->id
+                    ],
+                    [
+                        'amount' => $request[$extra->system_name]
+                    ]
+                );
+            }
+        }
+
         $booking->save();
         return $booking;
     }
