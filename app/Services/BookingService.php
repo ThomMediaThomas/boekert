@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Booking;
+use App\BookingExtra;
+use App\Extra;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -54,6 +56,19 @@ class BookingService
         $booking->children = $request->children;
 
         $booking->save();
+
+        //extras
+        $extras = Extra::all();
+        foreach ($extras as $extra) {
+            if ($request[$extra->system_name]) {
+                $booking_extra = new BookingExtra();
+                $booking_extra->booking_id = $booking->id;
+                $booking_extra->extra_id = $extra->id;
+                $booking_extra->amount = $request[$extra->system_name];
+                $booking_extra->save();
+            }
+        }
+
         return $booking;
     }
 
