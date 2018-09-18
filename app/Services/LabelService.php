@@ -18,7 +18,15 @@ class LabelService
         $camping_type = $model->camping_type;
         $chalet_type = $model->chalet_type;
 
-        return sprintf($template, $type, $camping_type, $chalet_type, $type, $camping_type, $chalet_type);
+        return sprintf(
+            $template,
+            $type->system_name,
+            $camping_type ? $camping_type->system_name : '',
+            $chalet_type ? $chalet_type->system_name : '',
+            $type->name,
+            $camping_type ? $camping_type->name : '',
+            $chalet_type? $chalet_type->name : ''
+        );
     }
 
     public function getCheckInLabel(Booking $booking) {

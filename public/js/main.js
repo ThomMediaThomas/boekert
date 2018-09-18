@@ -40,9 +40,10 @@ function initForms() {
     });
 
     if ($('#create-booking').length > 0 || $('#create-accommodation').length > 0) {
-        $('select#type').on('change', function () {
+        $('select#type_id').on('change', function () {
             $('.input-field.show-on-change-type').hide();
             $('#show-for-' + this.value).show();
+            console.log(this.value);
         }).trigger('change');
     }
 }

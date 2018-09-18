@@ -24,7 +24,10 @@ class Booking extends Model
     protected $includes = [
         'customer',
         'accommodation',
-        'booking_logs'
+        'booking_logs',
+        'type',
+        'chalet_type',
+        'camping_type'
     ];
 
     protected $dispatchesEvents = [
@@ -51,6 +54,21 @@ class Booking extends Model
     public function accommodation()
     {
         return $this->belongsTo(Accommodation::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(AccommodationType::class);
+    }
+
+    public function camping_type()
+    {
+        return $this->belongsTo(AccommodationSubType::class);
+    }
+
+    public function chalet_type()
+    {
+        return $this->belongsTo(AccommodationSubType::class);
     }
 
     public function booking_logs()

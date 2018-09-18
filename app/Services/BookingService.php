@@ -35,11 +35,14 @@ class BookingService
         $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
         $booking->date_to = $dateTo->format('Y-m-d');
 
-        $booking->type = $request->type;
-        if ($request->type == 'chalet') {
-            $booking->chalet_type = $request->chalet_type;
-        } else {
-            $booking->camping_type = $request->camping_type;
+        $booking->type_id = $request->type_id;
+        if ($request->type_id == 1) {
+            $booking->chalet_type_id = $request->chalet_type_id;
+            $booking->camping_type_id = null;
+        }
+        if ($request->type_id == 2) {
+            $booking->camping_type_id = $request->camping_type_id;
+            $booking->chalet_type_id = null;
         }
 
         $booking->accommodation_id = $request->accommodation_id;
@@ -68,11 +71,14 @@ class BookingService
         $dateTo = DateTime::createFromFormat('!d-m-Y', $request->date_to);
         $booking->date_to = $dateTo->format('Y-m-d');
 
-        $booking->type = $request->type;
-        if ($request->type == 'chalet') {
-            $booking->chalet_type = $request->chalet_type;
-        } else {
-            $booking->camping_type = $request->camping_type;
+        $booking->type_id = $request->type_id;
+        if ($request->type_id == 1) {
+            $booking->chalet_type_id = $request->chalet_type_id;
+            $booking->camping_type_id = null;
+        }
+        if ($request->type_id == 2) {
+            $booking->camping_type_id = $request->camping_type_id;
+            $booking->chalet_type_id = null;
         }
 
         if ($request->accommodation_id == 0) {
