@@ -77,7 +77,7 @@
                                     <i class="material-icons prefix">{{ $extra->icon }}</i>
                                     <label for="children">{{ $extra->name }}</label>
                                     <?php $bookingExtra = $booking->extras->where('id', $extra->id)->first();?>
-                                    <input id="{{ $extra->system_name }}" type="text" class="{{ $errors->has($extra->system_name) ? ' invalid' : '' }}" name="{{ $extra->system_name }}" value="{{ $bookingExtra ? $bookingExtra->pivot->amount : 0 }}" required>
+                                    <input id="{{ $extra->system_name }}" type="text" class="{{ $errors->has($extra->system_name) ? ' invalid' : '' }}" name="{{ $extra->system_name }}" value="{{ $bookingExtra ? $bookingExtra->pivot->amount : $extra->default }}" required>
                                 </div>
                             @endforeach
                         </div>

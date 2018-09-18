@@ -97,7 +97,7 @@
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">{{ $extra->icon }}</i>
                                     <label for="children">{{ $extra->name }}</label>
-                                    <input id="{{ $extra->system_name }}" type="text" class="{{ $errors->has($extra->system_name) ? ' invalid' : '' }}" name="{{ $extra->system_name }}" value="{{ old($extra->system_name) }}" required>
+                                    <input id="{{ $extra->system_name }}" type="text" class="{{ $errors->has($extra->system_name) ? ' invalid' : '' }}" name="{{ $extra->system_name }}" value="{{ old($extra->system_name) ? old($extra->system_name) : $extra->default }}" required>
                                 </div>
                             @endforeach
                         </div>
