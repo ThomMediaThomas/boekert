@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AccommodationSubType;
 use App\AccommodationType;
 use App\Booking;
+use App\Extra;
 use App\Services\AccommodationService;
 use App\Services\BookingService;
 use App\Services\CustomerService;
@@ -67,6 +68,9 @@ class BookingController extends Controller
      */
     public function create()
     {
+        //get extras
+        $extras = Extra::all();
+
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
         $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
@@ -74,6 +78,7 @@ class BookingController extends Controller
 
         return view('bookings/create', [
             'accommodation_types' => $accommodationTypes,
+            'extras' => $extras,
             'accommodation_chalet_types' => $accommodationChaletTypes,
             'accommodation_camping_types' => $accommodationCampingTypes
         ]);
@@ -110,6 +115,9 @@ class BookingController extends Controller
         $accommodationService = app(AccommodationService::class);
         $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
 
+        //get extras
+        $extras = Extra::all();
+
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
         $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
@@ -117,6 +125,7 @@ class BookingController extends Controller
 
         return view('bookings/edit', [
             'booking' => $booking,
+            'extras' => $extras,
             'accommodations' => $accommodations,
             'accommodation_types' => $accommodationTypes,
             'accommodation_chalet_types' => $accommodationChaletTypes,
@@ -150,6 +159,9 @@ class BookingController extends Controller
         $accommodationService = app(AccommodationService::class);
         $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
 
+        //get extras
+        $extras = Extra::all();
+
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
         $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
@@ -157,6 +169,7 @@ class BookingController extends Controller
 
         return view('bookings/edit', [
             'booking' => $booking,
+            'extras' => $extras,
             'accommodations' => $accommodations,
             'accommodation_types' => $accommodationTypes,
             'accommodation_chalet_types' => $accommodationChaletTypes,

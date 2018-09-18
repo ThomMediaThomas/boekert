@@ -52,8 +52,6 @@ class BookingService
 
         $booking->adults = $request->adults;
         $booking->children = $request->children;
-        $booking->pets = $request->pets;
-        $booking->cars = $request->cars;
 
         $booking->save();
         return $booking;
@@ -111,8 +109,6 @@ class BookingService
 
         $booking->adults = $request->adults;
         $booking->children = $request->children;
-        $booking->pets = $request->pets;
-        $booking->cars = $request->cars;
 
         $booking->save();
         return $booking;

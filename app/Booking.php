@@ -27,7 +27,8 @@ class Booking extends Model
         'booking_logs',
         'type',
         'chalet_type',
-        'camping_type'
+        'camping_type',
+        'extras'
     ];
 
     protected $dispatchesEvents = [
@@ -69,6 +70,11 @@ class Booking extends Model
     public function chalet_type()
     {
         return $this->belongsTo(AccommodationSubType::class);
+    }
+
+    public function extras()
+    {
+        return $this->belongsToMany(Extra::class)->withPivot('amount');
     }
 
     public function booking_logs()

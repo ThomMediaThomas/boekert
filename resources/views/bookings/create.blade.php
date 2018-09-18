@@ -87,20 +87,21 @@
                                 <input id="children" type="text" class="{{ $errors->has('children') ? ' invalid' : '' }}" name="children" value="{{ old('children') }}" required>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">pets</i>
-                                <label for="pets">Aantal honden</label>
-                                <input id="pets" type="text" class="{{ $errors->has('pets') ? ' invalid' : '' }}" name="pets" value="{{ old('pets') }}" required>
-                            </div>
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">car</i>
-                                <i class="material-icons prefix">directions_car</i>
-                                <label for="cars">Aantal extra auto's</label>
-                                <input id="cars" type="text" class="{{ $errors->has('cars') ? ' invalid' : '' }}" name="cars" value="{{ old('cars') }}" required>
-                            </div>
-                        </div>
                     </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><i class="material-icons">extension</i> Extra's</span>
+                        <div class="row">
+                            @foreach ($extras as $extra)
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">{{ $extra->icon }}</i>
+                                    <label for="children">{{ $extra->name }}</label>
+                                    <input id="{{ $extra->system_name }}" type="text" class="{{ $errors->has($extra->system_name) ? ' invalid' : '' }}" name="{{ $extra->system_name }}" value="{{ old($extra->system_name) }}" required>
+                                </div>
+                            @endforeach
+                        </div>
+                    </diV>
                 </div>
                 <div class="card">
                     <div class="card-content">

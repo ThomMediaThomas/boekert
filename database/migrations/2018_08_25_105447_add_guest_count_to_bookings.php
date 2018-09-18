@@ -16,8 +16,6 @@ class AddGuestCountToBookings extends Migration
         Schema::table('bookings', function (Blueprint $table) {
             $table->integer('adults')->nullable();
             $table->integer('children')->nullable();
-            $table->integer('pets')->nullable();
-            $table->integer('cars')->nullable();
         });
     }
 
