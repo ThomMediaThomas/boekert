@@ -186,7 +186,7 @@
                 <div class="card orange lighten-2">
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">euro_symbol</i> Prijsdetail</span>
-                        {{ $price }}
+                        {!! $price !!}
                     </div>
                 </div>
                 @if (isset($booking->customer))
