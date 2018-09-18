@@ -9,7 +9,6 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title"><i class="material-icons">work</i> Gegevens over boeking</span>
-                        {{ $price }}
                         <div class="row">
                             <div class="input-field col s6">
                                 <label for="date_from">Datum van</label>
@@ -182,6 +181,12 @@
                             </select>
                             <label for="accommodation_id">Accommodatie</label>
                         </div>
+                    </div>
+                </div>
+                <div class="card orange lighten-2">
+                    <div class="card-content">
+                        <span class="card-title"><i class="material-icons">euro_symbol</i> Prijsdetail</span>
+                        {{ $price }}
                     </div>
                 </div>
                 @if (isset($booking->customer))

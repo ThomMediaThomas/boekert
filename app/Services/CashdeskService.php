@@ -18,6 +18,15 @@ class CashdeskService
      */
     public function calculateBookingPrice(Booking $booking)
     {
+        return 'Prijs voor ' . $this->getNights($booking) . ' nachten: ' . $this->getTotal($booking);
+    }
+
+    /**
+     * @param Booking $booking
+     * @return string
+     */
+    public function getTotal(Booking $booking)
+    {
         $nights = $this->getNights($booking);
         $adults = $booking->adults;
         $children = $booking->children;
@@ -48,7 +57,7 @@ class CashdeskService
             }
         }
 
-        return 'Prijs voor ' . $nights . ' nachten: ' . $price;
+        return $price;
     }
 
     /**

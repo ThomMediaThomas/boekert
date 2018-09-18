@@ -119,6 +119,8 @@ class BookingController extends Controller
         //get extras
         $extras = Extra::all();
 
+        $price = app(CashdeskService::class)->calculateBookingPrice($booking);
+
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
         $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
@@ -127,6 +129,7 @@ class BookingController extends Controller
         return view('bookings/edit', [
             'booking' => $booking,
             'extras' => $extras,
+            'price' => $price,
             'accommodations' => $accommodations,
             'accommodation_types' => $accommodationTypes,
             'accommodation_chalet_types' => $accommodationChaletTypes,
