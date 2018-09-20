@@ -41,7 +41,7 @@
                             </div>
                             <div class="input-field col s6">
                                 <label for="date_to">Datum tot</label>
-                                <input id="date_to" type="text" class="datepicker {{ $errors->has('date_to') ? ' invalid' : '' }}" name="date_to" value="{{ old('date_to') }}" required>
+                                <input id="date_to" type="text" class="datepicker {{ $errors->has('date_to') ? ' invalid' : '' }}" name="date_to" value="{{ request('date_to') ? request('date_to') : old('date_to') }}" required>
                             </div>
                         </div>
                         <div class="row">

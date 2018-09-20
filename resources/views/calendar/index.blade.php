@@ -57,7 +57,7 @@
                             <td class="date <?php if($day['today']) : ?>today<?php endif; ?> <?php if($day['weekend']) : ?>weekend<?php endif; ?>"
                                 data-acc_id="{{ $accommodation->id }}"
                                 data-date="{{ $day['date'] }}">
-                                <a class="add-booking-trigger" href="/bookings/create?date_from={{ $day['date'] }}&accommodation_id={{ $accommodation->id }}">
+                                <a class="add-booking-trigger" href="/bookings/create?date_from={{ $day['date'] }}&date_to={{ $day['next_day_date'] }}&accommodation_id={{ $accommodation->id }}">
                                     <i class="material-icons">add</i>
                                 </a>
                             </td>
@@ -69,7 +69,7 @@
                     @foreach ($daysInMonth as $day)
                         <td class="date"
                             data-acc_id="null"
-                            data-date="{{ $day['date'] }}">
+                            data-date-from="{{ $day['date'] }}">
                         </td>
                     @endforeach
                 </tr>

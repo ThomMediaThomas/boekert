@@ -39,8 +39,10 @@ class CalendarController extends Controller
         $list = [];
         for ($d = 1; $d <= 31; $d++) {
             $time = mktime(12, 0, 0, $month, $d, $year);
+            $tomorrow = mktime(12, 0, 0, $month, $d + 1, $year);
             if (date('m', $time) == $month)
                 $list[] = [
+                    'next_day_date' => date('d-m-Y', $tomorrow),
                     'date' => date('d-m-Y', $time),
                     'date_short' => date('d', $time),
                     'day' => date('l', $time),
