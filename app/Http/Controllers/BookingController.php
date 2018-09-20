@@ -119,29 +119,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //get accommodations
-        $accommodationService = app(AccommodationService::class);
-        $accommodations = $accommodationService->getAvailableAccommodationsForBooking($booking);
-
-        //get extras
-        $extras = Extra::all();
-
-        $price = app(CashdeskService::class)->calculateBookingPrice($booking);
-
-        //get caccommodation-types
-        $accommodationTypes = AccommodationType::all();
-        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
-        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
-
-        return view('bookings/edit', [
-            'booking' => $booking,
-            'extras' => $extras,
-            'price' => $price,
-            'accommodations' => $accommodations,
-            'accommodation_types' => $accommodationTypes,
-            'accommodation_chalet_types' => $accommodationChaletTypes,
-            'accommodation_camping_types' => $accommodationCampingTypes
-        ]);
+       return $this->edit($booking);
     }
 
     /**
