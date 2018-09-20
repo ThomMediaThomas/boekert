@@ -13,12 +13,39 @@ class AccommodationController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $accommodations = Accommodation::all();
-        return view('accommodations/index', ['accommodations' => $accommodations]);
+        $accommodations = Accommodation::whereNotNull('id');
+        $filters = [];
+
+        if ($request->get('name')) {
+            $filters['name'] = $request->get('name');
+            $accommodations->name($request->get('name'));
+        }
+
+        if ($request->get('type_id')) {
+            $filters['type_id'] = $request->get('type_id');
+            $accommodations->typeId($request->get('type_id'));
+        }
+
+        if ($request->get('subtype_id')) {
+            $filters['subtype_id'] = $request->get('subtype_id');
+            $accommodations->subTypeId($request->get('subtype_id'));
+        }
+
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationSubTypes = AccommodationSubType::all();
+
+        return view('accommodations/index', [
+            'accommodations' => $accommodations->get(),
+            'filter' => $filters,
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_subtypes' => $accommodationSubTypes
+        ]);
     }
 
     /**

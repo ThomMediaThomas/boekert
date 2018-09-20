@@ -2,6 +2,13 @@
 @extends('layouts.app')
 @section('content')
     <h4>Alle accommodaties <a href="{{url('accommodations/create')}}" title="Nieuwe accommodatie maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h4>
+
+    <?php echo View::make('accommodations/elements/filters', [
+            'filter' => $filter,
+            'accommodation_types' => $accommodation_types,
+            'accommodation_subtypes' => $accommodation_subtypes
+    ]); ?>
+
     <table class="striped higlight sortable compact" id="accommodations-table">
         <thead>
             <tr>

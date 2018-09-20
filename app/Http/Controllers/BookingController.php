@@ -55,10 +55,17 @@ class BookingController extends Controller
             $bookings->type($request->get('type'));
         }
 
+        //get caccommodation-types
+        $accommodationTypes = AccommodationType::all();
+        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
+        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
 
         return view('bookings/index', [
             'bookings' => $bookings->get(),
-            'filter' => $filters
+            'filter' => $filters,
+            'accommodation_types' => $accommodationTypes,
+            'accommodation_chalet_types' => $accommodationChaletTypes,
+            'accommodation_camping_types' => $accommodationCampingTypes
         ]);
     }
 
@@ -78,8 +85,8 @@ class BookingController extends Controller
         $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
 
         return view('bookings/create', [
-            'accommodation_types' => $accommodationTypes,
             'extras' => $extras,
+            'accommodation_types' => $accommodationTypes,
             'accommodation_chalet_types' => $accommodationChaletTypes,
             'accommodation_camping_types' => $accommodationCampingTypes
         ]);
