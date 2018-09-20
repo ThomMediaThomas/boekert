@@ -33,38 +33,49 @@ class CashdeskService
 
         $accommodationPrice = $this->getAccommodationPrice($booking);
 
-        $html = '<ul>';
+        $listTemplate = '<li><span class="label">%s x %s <span class="label-note">(à %s € per %s)</span></span><span class="price">%s €</span></li>';
+
+        $html = '<ul class="price-detail">';
 
         //calculate base price
-        $basePrice = $accommodationPrice->price;
-        $price = $nights * $basePrice;
-        $html .= '<li><span>' . $nights . ' nachten:</span><strong>€ ' . $price .'</strong></li>';
+        if ($nights) {
+            $basePrice = $accommodationPrice->price;
+            $price = $nights * $basePrice;
+            $html .= sprintf($listTemplate, $nights, 'nachten', $basePrice, 'nacht', $price);
+        }
 
-        $adultPrice = $accommodationPrice->price_adult;
-        $price = ($nights * $adults * $adultPrice);
-        $html .= '<li><span>' . $adults . ' volwassenen (pppn):</span><strong>€ ' . $price .'</strong></li>';
+        if ($adults) {
+            $adultPrice = $accommodationPrice->price_adult;
+            $price = ($nights * $adults * $adultPrice);
+            $html .= sprintf($listTemplate, $adults, 'volwassenen', $adultPrice, 'nacht', $price);
+        }
 
-        $childPrice = $accommodationPrice->price_child;
-        $price = ($nights * $children * $childPrice);
-        $html .= '<li><span>' . $children . ' kinderen (pppn):</span><strong>€ ' . $price .'</strong></li>';
+        if ($children) {
+            $childPrice = $accommodationPrice->price_child;
+            $price = ($nights * $children * $childPrice);
+            $html .= sprintf($listTemplate, $children, 'kinderen', $childPrice, 'nacht', $price);
+        }
 
         //add extras
         $extras = $booking->extras;
         foreach ($extras as $extra) {
-            $extraPrice = $this->getExtraPrice($extra);
+            $extraPrice = $this->getExtraPrice($booking, $extra);
+            $amount = $extra->pivot->amount;
 
-            if ($extraPrice->price_night)  {
-                $price = $nights * $extraPrice->price * $extra->pivot->amount;
-                $html .= '<li><span>' . $extra->name . ' (pn):</span><strong>€ ' . $price .'</strong></li>';
-            }
+            if ($amount) {
+                if ($extraPrice->price_night) {
+                    $price = $nights * $extraPrice->price * $amount;
+                    $html .= sprintf($listTemplate, $amount, $extra->name, $extraPrice->price, 'nacht', $price);
+                }
 
-            if ($extraPrice->price_stay) {
-                $price = $extraPrice->price * $extra->pivot->amount;
-                $html .= '<li><span>' . $extra->name . ':</span><strong>€ ' . $price .'</strong></li>';
+                if ($extraPrice->price_stay) {
+                    $price = $extraPrice->price * $amount;
+                    $html .= sprintf($listTemplate, $amount, $extra->name, $extraPrice->price, 'verblijf', $price);
+                }
             }
         }
 
-        $html .= '<li class="total"><span>TOTAAL:</span><strong>€ ' . $this->getTotal($booking) .'</strong></li>';
+        $html .= '<li class="total"><span class="label">TOTAAL:</span><span class="price">€ ' . $this->getTotal($booking) .'</span></li>';
 
         $html .= '</ul>';
 
@@ -96,7 +107,7 @@ class CashdeskService
         //add extras
         $extras = $booking->extras;
         foreach ($extras as $extra) {
-            $extraPrice = $this->getExtraPrice($extra);
+            $extraPrice = $this->getExtraPrice($booking, $extra);
 
             if ($extraPrice->price_night)  {
                 $price = $price + ($nights * $extraPrice->price * $extra->pivot->amount);
@@ -128,19 +139,53 @@ class CashdeskService
      */
     private function getAccommodationPrice(Booking $booking)
     {
+        $dateFrom = $this->getBookingDateFrom($booking);
+
         if ($booking->type->system_name == 'chalet')  {
-            return AccommodationPrice::where('accommodation_subtype_id', $booking->chalet_type->id)->first();
+            return AccommodationPrice::where('accommodation_subtype_id', $booking->chalet_type->id)
+                ->where('date_from', '<=', $dateFrom)
+                ->where('date_to', '>=', $dateFrom)
+                ->first();
         } else {
-            return AccommodationPrice::where('accommodation_subtype_id', $booking->camping_type->id)->first();
+            return AccommodationPrice::where('accommodation_subtype_id', $booking->camping_type->id)
+                ->where('date_from', '<=', $dateFrom)
+                ->where('date_to', '>=', $dateFrom)
+                ->first();
         }
     }
 
     /**
+     * @param Booking $booking
+     * @return string
+     */
+    private function getBookingDateFrom (Booking $booking)
+    {
+        $dateFrom = DateTime::createFromFormat('!d-m-Y', $booking->date_from);
+        return $dateFrom->format('Y-m-d');
+    }
+
+    /**
+     * @param Booking $booking
+     * @return string
+     */
+    private function getBookingDateTo (Booking $booking)
+    {
+        $dateTo = DateTime::createFromFormat('!d-m-Y', $booking->date_to);
+        return $dateTo->format('Y-m-d');
+    }
+
+    /**
+     * @param Booking $booking
      * @param Extra $extra
      * @return mixed
      */
-    private function getExtraPrice(Extra $extra)
+    private function getExtraPrice(Booking $booking, Extra $extra)
     {
-        return ExtraPrice::where('extra_id', $extra->id)->first();
+        $dateFrom = $this->getBookingDateFrom($booking);
+
+        return ExtraPrice::where('extra_id', $extra->id)
+            ->where('date_from', '<=', $dateFrom)
+            ->where('date_to', '>=', $dateFrom)
+            ->first();
     }
 }

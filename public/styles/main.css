@@ -7132,6 +7132,30 @@ span.badge {
   #changelog ul {
     margin: 0px; }
 
+.price-detail li {
+  display: block;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.87);
+  padding: 5px 0px; }
+  .price-detail li .label {
+    display: inline-block;
+    width: 75%;
+    text-align: left; }
+    .price-detail li .label .label-note {
+      display: block;
+      padding-left: 10px;
+      font-size: 0.8em; }
+  .price-detail li .price {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    font-weight: bold; }
+  .price-detail li.total {
+    border-top: 2px solid rgba(0, 0, 0, 0.87);
+    position: relative;
+    top: -1px;
+    border-bottom: 0px;
+    font-weight: bold; }
+
 #calendar th, #calendar td {
   padding: 5px; }
   #calendar th.accommodation, #calendar td.accommodation {

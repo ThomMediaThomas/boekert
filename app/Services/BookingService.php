@@ -64,7 +64,7 @@ class BookingService
                 $booking_extra = new BookingExtra();
                 $booking_extra->booking_id = $booking->id;
                 $booking_extra->extra_id = $extra->id;
-                $booking_extra->amount = $request[$extra->system_name];
+                $booking_extra->amount = $request[$extra->system_name] ? $request[$extra->system_name] : 0;
                 $booking_extra->save();
             }
         }
@@ -128,17 +128,15 @@ class BookingService
         //extras
         $extras = Extra::all();
         foreach ($extras as $extra) {
-            if ($request[$extra->system_name]) {
-                BookingExtra::updateOrCreate(
-                    [
-                        'booking_id' => $booking->id,
-                        'extra_id' => $extra->id
-                    ],
-                    [
-                        'amount' => $request[$extra->system_name]
-                    ]
-                );
-            }
+            BookingExtra::updateOrCreate(
+                [
+                    'booking_id' => $booking->id,
+                    'extra_id' => $extra->id
+                ],
+                [
+                    'amount' => $request[$extra->system_name] ? $request[$extra->system_name] : 0
+                ]
+            );
         }
 
         $booking->save();
