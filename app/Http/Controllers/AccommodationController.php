@@ -38,13 +38,11 @@ class AccommodationController extends Controller
 
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
-        $accommodationSubTypes = AccommodationSubType::all();
 
         return view('accommodations/index', [
             'accommodations' => $accommodations->get(),
             'filter' => $filters,
-            'accommodation_types' => $accommodationTypes,
-            'accommodation_subtypes' => $accommodationSubTypes
+            'accommodation_types' => $accommodationTypes
         ]);
     }
 

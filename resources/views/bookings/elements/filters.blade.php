@@ -6,12 +6,13 @@
                 <input id="boekert_id" type="text" placeholder="bv. B_123456789_abcdef" name="boekert_id" value="{{ isset($filter['boekert_id']) ? $filter['boekert_id'] : '' }}">
             </div>
             <div class="input-field col s2">
-                <select id="type" name="type" value="{{ isset($filter['type']) ? $filter['type'] : '' }}" required>
-                    <option value="all" <?php if (isset($filter['type']) && $filter['type'] == 'all'): ?>selected<?php endif; ?>>Alles</option>
-                    <option value="chalet" <?php if (isset($filter['type']) && $filter['type'] == 'chalet'): ?>selected<?php endif; ?>>Huisje</option>
-                    <option value="camping" <?php if (isset($filter['type']) && $filter['type'] == 'camping'): ?>selected<?php endif; ?>>Kampeerplaats</option>
+                <select id="type_id" class="{{ $errors->has('type_id') ? ' invalid' : '' }}" name="type_id" value="{{ isset($filter['type_id']) ? $filter['type_id'] : '' }}" required>
+                    <option value="">- alles -</option>
+                    @foreach ($accommodation_types as $accommodation_type)
+                        <option value="{{ $accommodation_type->id }}" <?php if (isset($filter['type_id']) && $filter['type_id'] == $accommodation_type->id): ?>selected<?php endif; ?>>{{ $accommodation_type->name }}</option>
+                    @endforeach
                 </select>
-                <label for="type">Type</label>
+                <label for="type_id">Type</label>
             </div>
             <div class="input-field col s2">
                 <label for="date_from">Datum van</label>

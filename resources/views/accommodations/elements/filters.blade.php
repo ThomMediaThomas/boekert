@@ -7,7 +7,7 @@
             </div>
             <div class="input-field col s4">
                 <select id="type_id" class="{{ $errors->has('type_id') ? ' invalid' : '' }}" name="type_id" value="{{ isset($filter['type_id']) ? $filter['type_id'] : '' }}" required>
-                    <option value="">-- maak een keuze --</option>
+                    <option value="">- alles -</option>
                     @foreach ($accommodation_types as $accommodation_type)
                         <option value="{{ $accommodation_type->id }}" <?php if (isset($filter['type_id']) && $filter['type_id'] == $accommodation_type->id): ?>selected<?php endif; ?>>{{ $accommodation_type->name }}</option>
                     @endforeach
@@ -16,7 +16,7 @@
             </div>
             <div class="input-field col s4">
                 <select id="subtype_id" class="{{ $errors->has('subtype_id') ? ' invalid' : '' }}" name="subtype_id" value="{{ isset($filter['subtype_id']) ? $filter['subtype_id'] : '' }}" required>
-                    <option value="">-- maak een keuze --</option>
+                    <option value="">- alles -</option>
                     @foreach ($accommodation_subtypes as $accommodation_subtype)
                         <option value="{{ $accommodation_subtype->id }}" <?php if (isset($filter['subtype_id']) && $filter['subtype_id'] == $accommodation_subtype->id): ?>selected<?php endif; ?>>{{ $accommodation_subtype->name }}</option>
                     @endforeach

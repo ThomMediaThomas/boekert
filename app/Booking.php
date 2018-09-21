@@ -155,6 +155,20 @@ class Booking extends Model
 
     /**
      * @param $query
+     * @param $value
+     * @return mixed
+     */
+    public function scopeTypeId($query, $value)
+    {
+        if ($value) {
+            return $query->where('type_id', $value);
+        } else {
+            return $query;
+        }
+    }
+
+    /**
+     * @param $query
      * @param $from
      * @param $to
      * @return mixed

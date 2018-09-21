@@ -50,22 +50,20 @@ class BookingController extends Controller
             $bookings->textSearch($request->get('text'));
         }
 
-        if ($request->get('type')) {
-            $filters['type'] = $request->get('type');
-            $bookings->type($request->get('type'));
+        if ($request->get('type_id')) {
+            $filters['type_id'] = $request->get('type_id');
+            $bookings->typeId($request->get('type_id'));
         }
 
         //get caccommodation-types
         $accommodationTypes = AccommodationType::all();
-        $accommodationChaletTypes = AccommodationSubType::where('parent_type_id', 1)->get();
-        $accommodationCampingTypes = AccommodationSubType::where('parent_type_id', 2)->get();
+        $accommodationSubTypes = AccommodationSubType::all();
 
         return view('bookings/index', [
             'bookings' => $bookings->get(),
             'filter' => $filters,
             'accommodation_types' => $accommodationTypes,
-            'accommodation_chalet_types' => $accommodationChaletTypes,
-            'accommodation_camping_types' => $accommodationCampingTypes
+            'accommodation_subtypes' => $accommodationSubTypes,
         ]);
     }
 

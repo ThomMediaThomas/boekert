@@ -172,7 +172,7 @@
                         <div class="input-field">
                             <select id="accommodation_id" class="{{ $errors->has('type') ? ' invalid' : '' }}"
                                     name="accommodation_id" value="{{ old('accommodation_id') }}" required>
-                                <option value="0">-- Maak een keuze --</option>
+                                <option value="0">- alles -</option>
                                 @foreach ($accommodations as $accommodation)
                                     <option value="{{ $accommodation->id }}"
                                             <?php if ($booking->accommodation_id == $accommodation->id): ?>selected<?php endif; ?>

@@ -3,7 +3,10 @@
 @section('content')
     <h4>Alle boekingen <a href="{{url('bookings/create')}}" title="Nieuwe boeking maken" class="btn-floating btn-large"><i class="material-icons">add</i></a></h4>
 
-    <?php echo View::make('bookings/elements/filters', ['filter' => $filter]); ?>
+    <?php echo View::make('bookings/elements/filters', [
+            'filter' => $filter,
+            'accommodation_types' => $accommodation_types
+    ]); ?>
 
     <table class="striped higlight sortable compact" id="bookings-table">
         <thead>
