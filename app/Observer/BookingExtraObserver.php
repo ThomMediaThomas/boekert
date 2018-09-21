@@ -3,28 +3,29 @@
 namespace App\Observers;
 
 use App\Booking;
+use App\BookingExtra;
 use App\Services\BookingLogService;
 
-class BookingObserver
+class BookingExtraObserver
 {
     /**
-     * @param Booking $booking
+     * @param BookingExtra $bookingExtra
      */
-    public function saved(Booking $booking)
+    public function saved(BookingExtra $bookingExtra)
     {
         $bookingLogService = app(BookingLogService::class);
 
-        if ($booking->wasRecentlyCreated == true) {
-            $bookingLogService->create('Boeking werd aangemaakt', $booking);
-        } else {
-            $changed = $booking->getDirty();
+        if ($bookingExtra->wasRecentlyCreated != true) {
+            $booking = $bookingExtra->booking;
+            $changed = $bookingExtra->getDirty();
             $friendlyChanged = [];
 
             foreach($changed as $key => $value) {
                 if ($key != 'updated_at' && $key != 'created_at') {
-                    $friendlyChanged[] = $key . ' (nieuw: ' . $value . ')';
+                    $friendlyChanged[] = $bookingExtra->extra->name . '-' . $key . ' (nieuw: ' . $value . ')';
                 }
             }
+
             if (count($friendlyChanged) > 0) {
                 $bookingLogService->create('<p>Wijzigingen in: <ul class="browser-default"><li>' . implode('</li><li>', $friendlyChanged), $booking) . '</li></ul></p>';
             }
